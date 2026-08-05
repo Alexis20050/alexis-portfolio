@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>About Me | Alexis Genille S. Palicte</title>
+  <meta name="description" content="Learn more about Alexis Genille S. Palicte — a 2nd-Year BSIT student at the University of Mindanao, his skills, education, and projects including DormiHub (Dormitory Management System) and a POS Computer Parts and Services System built with Python PyQt.">
+  <meta name="keywords" content="About Alexis Palicte, BSIT Portfolio, Skills, Projects, DormiHub, POS System, University of Mindanao">
+  <meta name="author" content="Alexis Genille S. Palicte">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About Me | Alexis Genille S. Palicte">
+  <meta property="og:description" content="2nd-Year BSIT Student at the University of Mindanao. Skills, education, and projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="2x2.jpg">
+  <meta property="og:url" content="about.html">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="About Me | Alexis Genille S. Palicte">
+  <meta name="twitter:description" content="2nd-Year BSIT Student at the University of Mindanao.">
+  <meta name="twitter:image" content="2x2.jpg">
+
+  <!-- Google Fonts: JetBrains Mono / Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 (Free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Favicon (inline SVG "AP") -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e14'/><text x='50' y='65' font-size='38' font-family='monospace' font-weight='bold' fill='%23f0a93c' text-anchor='middle'>AP</text></svg>">
+
+  <!-- Theme-color meta (read by browsers for UI tinting) -->
+  <meta name="theme-color" content="#0a0e14" id="metaThemeColor">
+
+  <!-- Anti-FOUC: apply saved theme before page renders -->
+  <script>
+    (function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('metaThemeColor');if(m)m.setAttribute('content','#f6f7fa');}else if(!t&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('metaThemeColor');if(m)m.setAttribute('content','#f6f7fa');}}catch(e){}})();
+  </script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a href="index.html" class="nav-logo" aria-label="Alexis Palicte — Home">&gt;_</a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="index.html" class="nav-link"><span class="tab-dot"></span>home.js</a>
+        <a href="about.html" class="nav-link active" aria-current="page"><span class="tab-dot"></span>about.js</a>
+        <a href="game.html" class="nav-link"><span class="tab-dot"></span>game.js</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main id="main">
+
+    <!-- ---------- BIO SECTION ---------- -->
+    <section class="section">
+      <div class="container">
+        <div class="section__header fade-in">
+          <p class="section__eyebrow">about-me.md</p>
+          <h2><span class="fn">function</span> <span class="punc">about</span>() { ... }</h2>
+        </div>
+
+        <div class="about-bio win fade-in">
+          <div class="about-bio__text">
+            <h2>Hi, I'm <span>Alexis Genille S. Palicte</span></h2>
+            <p>
+              I am a 2nd-Year Bachelor of Science in Information Technology (BSIT) student
+              at the University of Mindanao in Davao City, Philippines. Technology has always
+              fascinated me — from the way systems work behind the scenes to how they shape
+              the digital experiences we rely on every day.
+            </p>
+            <p>
+              My passion lies in web development, where I enjoy turning ideas into
+              functional, user-friendly digital solutions. I'm continuously learning and
+              improving my skills in programming, design, and problem-solving to build
+              projects that are both practical and impactful.
+            </p>
+            <p>
+              My goal is to grow as a developer, contribute to meaningful projects, and
+              eventually create software that makes a real difference for people and
+              businesses alike.
+            </p>
+
+            <a href="assets/CV_Alexis_Genille_Palicte.pdf" class="btn btn--outline download-cv" download>
+              <i class="fa-solid fa-download" aria-hidden="true"></i> Download CV
+            </a>
+          </div>
+
+          <div class="about-bio__img-wrap">
+            <img src="2x2.jpg" alt="Profile photo of Alexis Genille S. Palicte" class="about-bio__img">
+          </div>
+        </div>
+
+        <!-- ---------- INFO CARDS ---------- -->
+        <div class="info-cards">
+          <article class="info-card fade-in">
+            <div class="info-card__icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+            <h3>Education</h3>
+            <p>BS Information Technology, 2nd Year</p>
+          </article>
+
+          <article class="info-card fade-in">
+            <div class="info-card__icon"><i class="fa-solid fa-building-columns" aria-hidden="true"></i></div>
+            <h3>University</h3>
+            <p>University of Mindanao</p>
+          </article>
+
+          <article class="info-card fade-in">
+            <div class="info-card__icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
+            <h3>Location</h3>
+            <p>Davao City, Philippines</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- SKILLS SECTION ---------- -->
+    <section class="section" style="border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-raised);">
+      <div class="container">
+        <div class="section__header fade-in">
+          <p class="section__eyebrow">package.json</p>
+          <h2>"dependencies": {</h2>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card fade-in">
+            <div class="skill-card__top">
+              <div class="skill-card__icon skill-card__icon--html"><i class="fa-brands fa-html5" aria-hidden="true"></i></div>
+              <span class="skill-card__version">^5.0</span>
+            </div>
+            <h3>HTML</h3>
+            <p>Building semantic, accessible, and well-structured web pages.</p>
+          </article>
+
+          <article class="skill-card fade-in">
+            <div class="skill-card__top">
+              <div class="skill-card__icon skill-card__icon--css"><i class="fa-brands fa-css3-alt" aria-hidden="true"></i></div>
+              <span class="skill-card__version">^3.0</span>
+            </div>
+            <h3>CSS</h3>
+            <p>Creating responsive layouts and modern, clean visual designs.</p>
+          </article>
+
+          <article class="skill-card fade-in">
+            <div class="skill-card__top">
+              <div class="skill-card__icon skill-card__icon--java"><i class="fa-brands fa-java" aria-hidden="true"></i></div>
+              <span class="skill-card__version">^17</span>
+            </div>
+            <h3>Java</h3>
+            <p>Object-oriented programming and building desktop applications.</p>
+          </article>
+
+          <article class="skill-card fade-in">
+            <div class="skill-card__top">
+              <div class="skill-card__icon skill-card__icon--network"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></div>
+              <span class="skill-card__version">core</span>
+            </div>
+            <h3>Networking</h3>
+            <p>Understanding network fundamentals, configuration, and security basics.</p>
+          </article>
+
+          <article class="skill-card fade-in">
+            <div class="skill-card__top">
+              <div class="skill-card__icon skill-card__icon--python"><i class="fa-brands fa-python" aria-hidden="true"></i></div>
+              <span class="skill-card__version">^3.11</span>
+            </div>
+            <h3>Python</h3>
+            <p>Developing applications and scripting with Python and PyQt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- PROJECTS SECTION ---------- -->
+    <section class="section">
+      <div class="container">
+        <div class="section__header fade-in">
+          <p class="section__eyebrow">repositories</p>
+          <h2><span class="fn">git</span> log --projects</h2>
+        </div>
+
+        <div class="projects-grid">
+          <!-- DormiHub — Featured Project -->
+          <article class="project-card fade-in">
+            <img src="Screenshot 2026-08-04 190849.png" alt="Screenshot of the DormiHub Dormitory Management System interface" class="project-card__img">
+            <div class="project-card__body">
+              <h3><a href="https://dormihub.onrender.com/" target="_blank" rel="noopener noreferrer">DormiHub – Dormitory Management System</a></h3>
+              <p>
+                A full-stack web platform that streamlines room tracking, resident applications, and
+                maintenance requests for dormitories. Built with Laravel, it offers role-based dashboards
+                (Admin, Staff, Resident), real-time room status, and a responsive UI. Administrators can
+                manage rooms, pricing, and archives, while residents can browse availability and apply
+                instantly. The project demonstrates clean MVC architecture, secure authentication, and
+                intuitive UX design.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Laravel</span>
+                <span class="project-tag">Full-Stack</span>
+                <span class="project-tag">MySQL</span>
+                <span class="project-tag">MVC</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Mandatory POS Project -->
+          <article class="project-card fade-in">
+            <div class="project-card__icon"><i class="fa-solid fa-cash-register" aria-hidden="true"></i></div>
+            <div class="project-card__body">
+              <h3>POS Computer Parts and Services System</h3>
+              <p>
+                A comprehensive Point of Sale system built with Python and PyQt for managing
+                computer hardware inventory, sales transactions, customer data, and service
+                tracking with real-time reporting capabilities.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">PyQt</span>
+                <span class="project-tag">MySQL</span>
+                <span class="project-tag">Inventory</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Personal Portfolio Website -->
+          <article class="project-card fade-in">
+            <div class="project-card__icon project-card__icon--green"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></div>
+            <div class="project-card__body">
+              <h3>Personal Portfolio Website</h3>
+              <p>
+                A modern, responsive personal portfolio website — the very site you're
+                viewing now — built with HTML, CSS, and JavaScript to showcase my skills,
+                projects, and personal brand.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag project-tag--green">HTML</span>
+                <span class="project-tag project-tag--green">CSS</span>
+                <span class="project-tag project-tag--green">JavaScript</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Coming Soon -->
+          <article class="project-card fade-in">
+            <div class="project-card__icon project-card__icon--gray"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i></div>
+            <div class="project-card__body">
+              <h3>Coming Soon</h3>
+              <p>
+                Exciting new projects are in the works. This space will feature my upcoming
+                web and software development work — stay tuned!
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">In Progress</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Ongoing message -->
+        <div class="projects-message fade-in">
+          <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+          I am currently developing several exciting projects. Stay tuned to see what I've been working on.
+        </div>
+
+        <div class="download-cv">
+          <a href="assets/CV_Alexis_Genille_Palicte.pdf" class="btn btn--primary" download>
+            <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download My CV
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__status">
+        <span><i class="fa-solid fa-code-branch" aria-hidden="true"></i> main</span>
+        <span><i class="fa-solid fa-check" aria-hidden="true"></i> build passing</span>
+        <span class="footer__tagline">&copy; 2026 Alexis Genille S. Palicte</span>
+      </div>
+      <div class="footer__socials">
+        <a href="https://github.com/Alexis20050" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.facebook.com/kyrie.strong.3" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile">
+          <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

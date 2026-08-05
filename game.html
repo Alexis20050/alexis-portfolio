@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>Rock Paper Scissors Game | Alexis Genille S. Palicte</title>
+  <meta name="description" content="Play Rock Paper Scissors against the computer. First to 5 wins! A fun game by Alexis Genille S. Palicte.">
+  <meta name="keywords" content="Rock Paper Scissors, Game, Alexis Palicte, Fun Game, First to 5">
+  <meta name="author" content="Alexis Genille S. Palicte">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rock Paper Scissors Game | Alexis Genille S. Palicte">
+  <meta property="og:description" content="Play against the computer. First to 5 wins!">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="2x2.jpg">
+  <meta property="og:url" content="game.html">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rock Paper Scissors Game | Alexis Genille S. Palicte">
+  <meta name="twitter:description" content="Play against the computer. First to 5 wins!">
+  <meta name="twitter:image" content="2x2.jpg">
+
+  <!-- Google Fonts: JetBrains Mono / Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 (Free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Favicon (inline SVG "AP") -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e14'/><text x='50' y='65' font-size='38' font-family='monospace' font-weight='bold' fill='%23f0a93c' text-anchor='middle'>AP</text></svg>">
+
+  <!-- Theme-color meta (read by browsers for UI tinting) -->
+  <meta name="theme-color" content="#0a0e14" id="metaThemeColor">
+
+  <!-- Anti-FOUC: apply saved theme before page renders -->
+  <script>
+    (function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('metaThemeColor');if(m)m.setAttribute('content','#f6f7fa');}else if(!t&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('metaThemeColor');if(m)m.setAttribute('content','#f6f7fa');}}catch(e){}})();
+  </script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a href="index.html" class="nav-logo" aria-label="Alexis Palicte — Home">&gt;_</a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="index.html" class="nav-link"><span class="tab-dot"></span>home.js</a>
+        <a href="about.html" class="nav-link"><span class="tab-dot"></span>about.js</a>
+        <a href="game.html" class="nav-link active" aria-current="page"><span class="tab-dot"></span>game.js</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== GAME SECTION ==================== -->
+  <main id="main" class="game">
+    <div class="game__card win fade-in">
+      <div class="win__bar">
+        <span class="win__dot win__dot--red"></span>
+        <span class="win__dot win__dot--yellow"></span>
+        <span class="win__dot win__dot--green"></span>
+        <span class="win__path">~/portfolio/game.js — running</span>
+      </div>
+
+      <div style="padding: 2rem 2.2rem 2.4rem;">
+      <h1 class="game__title"><i class="fa-solid fa-gamepad" aria-hidden="true" style="color: var(--accent);"></i> Rock Paper Scissors</h1>
+      <p class="game__subtitle">Play against the computer. First to 5 wins!</p>
+
+      <!-- Scoreboard -->
+      <div class="game__scoreboard">
+        <div class="game__score">
+          <p class="game__score-label">You</p>
+          <p class="game__score-number" id="playerScore">0</p>
+        </div>
+        <div class="game__score game__score--computer">
+          <p class="game__score-label">Computer</p>
+          <p class="game__score-number" id="computerScore">0</p>
+        </div>
+      </div>
+
+      <!-- Choice display -->
+      <div class="game__choices" aria-live="polite">
+        <div class="game__choice-box" id="playerChoiceBox">
+          <span class="game__emoji" id="playerEmoji">❔</span>
+          <span class="game__choice-name" id="playerChoiceName">Your pick</span>
+        </div>
+
+        <span class="game__vs" aria-hidden="true">VS</span>
+
+        <div class="game__choice-box" id="computerChoiceBox">
+          <span class="game__emoji" id="computerEmoji">❔</span>
+          <span class="game__choice-name" id="computerChoiceName">Computer</span>
+        </div>
+      </div>
+
+      <!-- Round result -->
+      <p class="game__result" id="roundResult">Choose your move to start!</p>
+
+      <!-- Action buttons -->
+      <div class="game__actions" role="group" aria-label="Choose your move">
+        <button class="game__btn" data-choice="rock" aria-label="Choose Rock">
+          <span class="game__btn-emoji" aria-hidden="true">🪨</span>
+          <span class="game__btn-label">Rock</span>
+        </button>
+        <button class="game__btn" data-choice="paper" aria-label="Choose Paper">
+          <span class="game__btn-emoji" aria-hidden="true">📄</span>
+          <span class="game__btn-label">Paper</span>
+        </button>
+        <button class="game__btn" data-choice="scissors" aria-label="Choose Scissors">
+          <span class="game__btn-emoji" aria-hidden="true">✂️</span>
+          <span class="game__btn-label">Scissors</span>
+        </button>
+      </div>
+
+      <!-- Reset button -->
+      <button class="game__reset" id="resetGame" aria-label="Reset game">
+        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Reset Game
+      </button>
+      </div>
+    </div>
+
+    <!-- Game over overlay -->
+    <div class="game__over" id="gameOverOverlay" role="dialog" aria-modal="true" aria-labelledby="gameOverTitle">
+      <div class="game__over-card">
+        <h3 id="gameOverTitle">Game Over!</h3>
+        <p id="gameOverMessage">Final score</p>
+        <button class="btn btn--primary" id="playAgainBtn">
+          <i class="fa-solid fa-play" aria-hidden="true"></i> Play Again
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__status">
+        <span><i class="fa-solid fa-code-branch" aria-hidden="true"></i> main</span>
+        <span><i class="fa-solid fa-check" aria-hidden="true"></i> build passing</span>
+        <span class="footer__tagline">&copy; 2026 Alexis Genille S. Palicte</span>
+      </div>
+      <div class="footer__socials">
+        <a href="https://github.com/Alexis20050" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.facebook.com/kyrie.strong.3" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile">
+          <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
