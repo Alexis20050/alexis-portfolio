@@ -406,3 +406,75 @@
     });
   }
 })();
+
+/* Move the home panel with its file tab, pointer or keyboard. */
+(function initMovablePortfolio() {
+  const handle = document.getElementById('portfolioDrag');
+  const reset = document.getElementById('portfolioReset');
+  if (!handle || !reset) return;
+  const panel = handle.closest('.editor-panel');
+  const stage = panel.closest('.hero');
+  let x = 0;
+  let y = 0;
+  let drag = null;
+
+  function move(nextX, nextY) {
+    const box = panel.getBoundingClientRect();
+    const area = stage.getBoundingClientRect();
+    const left = box.left - x;
+    const top = box.top - y;
+    const minX = 12 - left;
+    const maxX = document.documentElement.clientWidth - 12 - left - box.width;
+    const minY = area.top + 12 - top;
+    const maxY = area.bottom - 12 - top - box.height;
+    x = Math.max(minX, Math.min(Math.max(minX, maxX), nextX));
+    y = Math.max(minY, Math.min(Math.max(minY, maxY), nextY));
+    panel.style.setProperty('--panel-x', x + 'px');
+    panel.style.setProperty('--panel-y', y + 'px');
+  }
+
+  function endDrag() {
+    if (drag && handle.hasPointerCapture(drag.id)) handle.releasePointerCapture(drag.id);
+    drag = null;
+    panel.classList.remove('is-dragging');
+  }
+
+  function resetPosition() {
+    endDrag();
+    x = 0;
+    y = 0;
+    panel.style.removeProperty('--panel-x');
+    panel.style.removeProperty('--panel-y');
+  }
+
+  handle.addEventListener('pointerdown', function (event) {
+    if (!event.isPrimary || event.button !== 0) return;
+    // Finish the entrance animation before measuring drag boundaries.
+    panel.classList.add('visible');
+    panel.style.transform = 'none';
+    handle.focus({ preventScroll: true });
+    drag = { id: event.pointerId, startX: event.clientX, startY: event.clientY, x: x, y: y };
+    handle.setPointerCapture(event.pointerId);
+    panel.classList.add('is-dragging');
+  });
+  handle.addEventListener('pointermove', function (event) {
+    if (!drag || drag.id !== event.pointerId) return;
+    move(drag.x + event.clientX - drag.startX, drag.y + event.clientY - drag.startY);
+  });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (name) {
+    handle.addEventListener(name, endDrag);
+  });
+  handle.addEventListener('keydown', function (event) {
+    const step = event.shiftKey ? 40 : 10;
+    const directions = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] };
+    if (directions[event.key]) {
+      event.preventDefault();
+      move(x + directions[event.key][0], y + directions[event.key][1]);
+    } else if (event.key === 'Escape') {
+      event.preventDefault();
+      resetPosition();
+    }
+  });
+  reset.addEventListener('click', resetPosition);
+  window.addEventListener('resize', resetPosition);
+})();

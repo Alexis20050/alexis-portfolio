@@ -6,13 +6,13 @@
 
   <!-- SEO Meta Tags -->
   <title>Alexis Genille S. Palicte | Web Developer</title>
-  <meta name="description" content="Portfolio of Alexis Genille S. Palicte, 2nd-Year BSIT Student at the University of Mindanao and aspiring web developer. Building functional and user-friendly digital solutions.">
+  <meta name="description" content="Portfolio of Alexis Genille S. Palicte, 3rd-Year BSIT Student at the University of Mindanao and aspiring web developer. Building functional and user-friendly digital solutions.">
   <meta name="keywords" content="Alexis Genille Palicte, BSIT, University of Mindanao, Web Developer, Portfolio, Student">
   <meta name="author" content="Alexis Genille S. Palicte">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Alexis Genille S. Palicte | Web Developer">
-  <meta property="og:description" content="2nd-Year BSIT Student at the University of Mindanao. Building functional & user-friendly digital solutions.">
+  <meta property="og:description" content="3rd-Year BSIT Student at the University of Mindanao. Building functional & user-friendly digital solutions.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="2x2.jpg">
   <meta property="og:url" content="index.html">
@@ -20,7 +20,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Alexis Genille S. Palicte | Web Developer">
-  <meta name="twitter:description" content="2nd-Year BSIT Student at the University of Mindanao.">
+  <meta name="twitter:description" content="3rd-Year BSIT Student at the University of Mindanao.">
   <meta name="twitter:image" content="2x2.jpg">
 
   <!-- Google Fonts: JetBrains Mono / Inter -->
@@ -52,12 +52,12 @@
   <!-- ==================== NAVIGATION BAR ==================== -->
   <header class="navbar">
     <div class="container navbar__inner">
-      <a href="index.html" class="nav-logo" aria-label="Alexis Palicte — Home">>_</a>
+      <a href="index.html" class="nav-logo" aria-label="Alexis Palicte — Home"><span class="brand-mark">AP</span><span class="brand-name">Alexis Palicte<small>Developer</small></span></a>
 
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="index.html" class="nav-link active" aria-current="page"><span class="tab-dot"></span>home.js</a>
-        <a href="about.html" class="nav-link"><span class="tab-dot"></span>about.js</a>
-        <a href="game.html" class="nav-link"><span class="tab-dot"></span>game.js</a>
+        <a href="index.html" class="nav-link active" aria-current="page">home.js</a>
+        <a href="about.html" class="nav-link">about.js</a>
+        <a href="game.html" class="nav-link">game.js</a>
       </nav>
 
       <div class="nav-actions">
@@ -75,51 +75,49 @@
   <main id="main">
     <section class="hero">
       <div class="container hero__inner">
-        <!-- Left: Terminal-style intro -->
-        <div class="terminal win fade-in">
-          <div class="win__bar">
-            <span class="win__dot win__dot--red"></span>
-            <span class="win__dot win__dot--yellow"></span>
-            <span class="win__dot win__dot--green"></span>
-            <span class="win__path">~/portfolio — zsh</span>
+        <div class="hero__intro editor-panel fade-in">
+          <div class="panel-heading panel-heading--movable">
+            <button class="panel-drag" id="portfolioDrag" type="button" aria-label="Move portfolio panel" aria-describedby="portfolioDragHint">
+              <span class="panel-heading__index" aria-hidden="true">01</span>
+              <span class="panel-heading__file">portfolio.js</span>
+              <span class="panel-drag__hint" aria-hidden="true">Drag to move</span>
+            </button>
+            <button class="panel-reset" id="portfolioReset" type="button" aria-label="Reset portfolio panel position" title="Reset position">&#8634;</button>
+            <span class="sr-only" id="portfolioDragHint">Drag to move, or use the arrow keys. Press Escape to reset the position.</span>
           </div>
-          <div class="terminal__body">
-            <p class="terminal__line"><span class="terminal__prompt">$</span><span class="terminal__cmd">whoami</span></p>
-            <p class="terminal__out">
-              <span class="hero__name">Alexis Genille S. Palicte</span>
-            </p>
-
-            <p class="terminal__line"><span class="terminal__prompt">$</span><span class="terminal__cmd">cat role.txt</span></p>
-            <p class="terminal__out">
-              <span class="hero__title">2nd-Year BSIT Student · Aspiring Web Developer</span><br>
-              <span class="hero__tagline">Building functional, user-friendly digital solutions — one commit at a time.</span>
-            </p>
-
-            <p class="terminal__line"><span class="terminal__prompt">$</span><span class="terminal__cmd">./contact --list</span><span class="cursor" aria-hidden="true"></span></p>
-
-            <div class="terminal__actions">
+          <div class="editor-panel__body">
+          <p class="section__eyebrow">Alexis Palicte / Web development</p>
+          <h1 class="hero__headline">Thoughtful code.<br><span>Useful experiences.</span></h1>
+          <p class="hero__introduction">Hi, I'm Alexis Genille S. Palicte.</p>
+          <p class="hero__description">A 3rd-year BSIT student at the University of Mindanao, turning ideas into functional, user-friendly digital solutions.</p>
+          <div class="cta-btns">
+            <a href="about.html#projects" class="btn btn--primary">Explore my work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a href="about.html" class="btn btn--outline">About me</a>
+          </div>
+          <div class="hero__socials">
               <a href="https://github.com/Alexis20050" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--github">
                 <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
               </a>
               <a href="https://www.facebook.com/kyrie.strong.3" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--fb">
                 <i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Facebook
               </a>
-              <a href="mailto:a.palicte.558276@umindanao.edu.ph" class="social-btn social-btn--email">
-                <i class="fa-solid fa-envelope" aria-hidden="true"></i> Email
+              <a href="https://www.linkedin.com/in/alexis-genille-palicte-8194b232a" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--linkedin">
+                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i> LinkedIn
               </a>
             </div>
+          <a class="latest-project" href="https://veritas-core-college-demo.onrender.com/" target="_blank" rel="noopener noreferrer">
+            <span><small>Latest project</small><strong>Veritas Core</strong><span>Explore the college demo</span></span>
+            <span class="latest-project__arrow" aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
 
-            <div class="cta-btns" style="margin-top: 1rem;">
-              <a href="about.html" class="btn btn--primary"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> View Portfolio</a>
-            </div>
-          </div>
         </div>
 
         <!-- Right: Profile image -->
         <div class="hero__img-wrap fade-in">
           <div class="hero__img-frame">
             <img src="2x2.jpg" alt="Professional portrait of Alexis Genille S. Palicte" class="hero__img">
-            <span class="hero__img-tag">● online</span>
+            <span class="hero__img-tag">Based in Davao, Philippines</span>
           </div>
         </div>
       </div>
@@ -130,11 +128,14 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__status">
-        <span><i class="fa-solid fa-code-branch" aria-hidden="true"></i> main</span>
-        <span><i class="fa-solid fa-check" aria-hidden="true"></i> build passing</span>
+        <span class="footer__brand">AP / Developer</span>
+        <span>Davao City, Philippines</span>
         <span class="footer__tagline">&copy; 2026 Alexis Genille S. Palicte</span>
       </div>
       <div class="footer__socials">
+        <a href="https://www.linkedin.com/in/alexis-genille-palicte-8194b232a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+        </a>
         <a href="https://github.com/Alexis20050" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
           <i class="fa-brands fa-github" aria-hidden="true"></i>
         </a>
