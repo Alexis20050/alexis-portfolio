@@ -14,9 +14,12 @@ let sequence = 0;
 let checks = 0;
 const pending = new Map();
 const exceptions = [];
+const internalNavigations = [];
+let guardNavigation = false;
 socket.addEventListener('message', event => {
   const message = JSON.parse(event.data);
   if (message.method === 'Runtime.exceptionThrown') exceptions.push(message.params.exceptionDetails);
+  if (guardNavigation && (message.method === 'Page.frameNavigated' || message.method === 'Page.navigatedWithinDocument')) internalNavigations.push(message.params);
   if (!message.id) return;
   const task = pending.get(message.id);
   if (!task) return;
@@ -50,8 +53,10 @@ function check(condition, label) { assert.ok(condition, label); checks++; }
 const click = selector => evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);
 const size = (width, height = 900) => send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
 async function navigate(page = 'index.html') {
+  const previousDocument = await evaluate('performance.timeOrigin');
   await send('Page.navigate', { url: `${base}/${page}` });
-  await until(`document.readyState === 'complete' && location.pathname.endsWith('${page}')`);
+  await until(`performance.timeOrigin !== ${previousDocument} && document.readyState === 'complete' && location.pathname.endsWith('${page}')`);
+  await send('Page.bringToFront');
   await evaluate('document.fonts.ready.then(() => true)');
 }
 async function open(app) {
@@ -77,8 +82,26 @@ try {
   await send('Network.enable');
   await size(1440, 1000);
   await navigate();
+  const homepage = await evaluate('location.href');
+  guardNavigation = true;
   await evaluate("localStorage.setItem('theme','light'); document.documentElement.dataset.theme='light'");
   await screenshot('home-desktop');
+  const launcherSelectors = await evaluate(`Array.from(document.querySelectorAll('.app-tile, .dock-app, .workspace-intro [data-open-app], .workspace-latest'), button => ({
+    selector: button.classList.contains('app-tile') ? '.app-tile[data-open-app="'+button.dataset.openApp+'"]' :
+      button.classList.contains('dock-app') ? '.dock-app[data-open-app="'+button.dataset.openApp+'"]' :
+      button.classList.contains('workspace-latest') ? '.workspace-latest' : '.workspace-intro [data-open-app]', app: button.dataset.openApp
+  }))`);
+  for (const launcher of launcherSelectors) {
+    const homeScroll = await evaluate("document.querySelector('#interfaceHome').scrollTop");
+    await click(launcher.selector);
+    await until(`document.querySelector('[data-app="${launcher.app}"] .window-content')?.getAttribute('aria-busy') === 'false'`);
+    check(await evaluate(`document.querySelectorAll('[data-app="${launcher.app}"]').length === 1 && document.querySelector('.app-window.is-active').dataset.app === '${launcher.app}' && location.href === ${JSON.stringify(homepage)} && document.querySelector('#interfaceHome').scrollTop === ${homeScroll}`), `${launcher.selector} opens its existing window without navigation or section scrolling`);
+  }
+  check(await evaluate("Array.from(document.querySelectorAll('[data-open-app]')).every(button=>button.tagName==='BUTTON' && !button.hasAttribute('href'))"), 'Internal launchers have no fallback routes, including modified/middle clicks');
+  await click('.nav-logo');
+  check(await evaluate("Array.from(document.querySelectorAll('.app-window')).every(win=>win.hidden) && document.activeElement.classList.contains('app-tile')"), 'Brand returns home without reloading');
+  await click('.skip-link');
+  check(await evaluate("document.activeElement.id === 'main' && !location.hash"), 'Skip control focuses the workspace without a fragment change');
   for (const app of ['about', 'projects', 'skills', 'contact']) await open(app);
   await screenshot('multiple-windows');
   check(await evaluate("document.querySelectorAll('.app-window').length === 4"), 'Four applications open');
@@ -88,6 +111,10 @@ try {
   await click('#project-tab-1');
   await until("document.querySelector('#project-detail img')?.naturalWidth === 1910");
   check(await evaluate("document.querySelector('#project-detail h3').textContent.includes('DormiHub') && document.querySelector('#project-detail img').naturalWidth === 1910"), 'Project selection uses actual screenshot');
+  check(await evaluate("document.querySelector('#project-detail .project-preview').tagName === 'FIGURE' && !document.querySelector('#project-detail .project-preview a')"), 'Project screenshot stays inside the Projects window');
+  await open('about');
+  await click('[data-app=about] [data-open-app=projects]');
+  check(await evaluate("document.querySelectorAll('[data-app=projects]').length === 1 && document.querySelector('.app-window.is-active').dataset.app === 'projects'"), 'About project action reuses the Projects window');
   await screenshot('projects-desktop');
   await evaluate("document.querySelector('#project-detail').scrollTop = 120");
   const scroll = await evaluate("document.querySelector('#project-detail').scrollTop");
@@ -130,6 +157,7 @@ try {
   await click('.copy-button');
   await until("Boolean(document.querySelector('.copy-feedback input'))");
   check(await evaluate("document.querySelector('.copy-feedback input').value === 'https://github.com/Alexis20050' && document.activeElement.tagName === 'INPUT'"), 'Clipboard denial provides selectable manual copy');
+  await evaluate('delete navigator.clipboard');
   await action('contact', 'close');
   await click('.dock-app[data-open-app=contact]');
   await wait(200);
@@ -175,14 +203,30 @@ try {
   check(await evaluate("getComputedStyle(document.querySelector('[data-app=skills]')).animationName === 'none'"), 'Reduced motion removes window animation');
   await send('Emulation.setEmulatedMedia', { features: [] });
   await click('#themeToggle');
+  check(await evaluate(`location.href === ${JSON.stringify(homepage)}`) && internalNavigations.length === 0, 'All desktop/mobile interactions kept the original URL and caused no document or fragment navigation');
+  guardNavigation = false;
   await navigate();
   check(await evaluate("document.documentElement.dataset.theme === localStorage.getItem('theme')"), 'Theme preference persists');
 
-  // Missing/blocked HTML is recoverable and never hides the readable route.
+  // Application contents are embedded; legacy page/network availability is irrelevant.
   await send('Network.setBlockedURLs', { urls: ['*about.html*'] });
   await open('about');
-  check(await evaluate("Boolean(document.querySelector('.window-error a[href=\"about.html#profile\"]'))"), 'Load failure offers direct portfolio link');
+  check(await evaluate("Boolean(document.querySelector('[data-app=about] .about-bio .micro-label')) && !document.querySelector('.window-error')"), 'About uses the current embedded template without fetching another page');
+  await open('contact');
+  check(await evaluate("document.querySelector('[data-app=contact] a[href^=\"mailto:\"]').href === 'mailto:a.palicte.558276@umindanao.edu.ph'"), 'Embedded contact email is preserved');
+  await click('.copy-button--email');
+  await until("document.querySelector('.copy-feedback').textContent.includes('Copied')");
+  check(await evaluate("navigator.clipboard.readText().then(t=>t==='a.palicte.558276@umindanao.edu.ph')"), 'Copy email uses the existing contact address');
+  check(await evaluate("Array.from(document.querySelectorAll('a[href]')).every(a=>new URL(a.href).origin!==location.origin) && Array.from(document.querySelectorAll('a[target=_blank]')).every(a=>a.rel.includes('noopener'))"), 'Only intentional external links remain in the interface');
+  await action('contact', 'close');
+  await until("!document.querySelector('[data-app=contact]')");
+  await action('about', 'close');
+  await until("!document.querySelector('[data-app=about]')");
   await send('Network.setBlockedURLs', { urls: [] });
+  await evaluate("window.savedAboutTemplate=document.querySelector('#template-about'); window.savedAboutTemplate.remove()");
+  await open('about');
+  check(await evaluate("Boolean(document.querySelector('.window-error .retry-button')) && !document.querySelector('.window-error a')"), 'Content error offers an in-place retry without a redirect');
+  await evaluate("document.querySelector('#main').append(window.savedAboutTemplate); delete window.savedAboutTemplate");
   await click('.retry-button');
   await until("Boolean(document.querySelector('[data-app=about] .about-bio'))");
   check(await evaluate("!document.querySelector('.window-error')"), 'Failed content can retry successfully');
@@ -197,7 +241,7 @@ try {
 
   await send('Emulation.setScriptExecutionDisabled', { value: true });
   await navigate();
-  check(await evaluate("Array.from(document.querySelectorAll('.app-tile')).every(a=>a.getAttribute('href').startsWith('about.html#')) && document.querySelector('a[href=\"about.html\"]') !== null"), 'No-JavaScript navigation remains real links');
+  check(await evaluate("Array.from(document.querySelectorAll('.app-tile')).every(button=>button.tagName==='BUTTON') && !document.querySelector('a[href]') && Boolean(document.querySelector('noscript'))"), 'JavaScript-disabled home explains the requirement and has no redirect fallbacks');
   await send('Emulation.setScriptExecutionDisabled', { value: false });
   for (const page of ['about.html', 'game.html']) {
     await navigate(page);

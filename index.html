@@ -23,10 +23,10 @@
   <meta name="twitter:description" content="3rd-Year BSIT Student at the University of Mindanao.">
   <meta name="twitter:image" content="2x2.jpg">
 
-  <!-- Google Fonts: JetBrains Mono / Inter -->
+  <!-- Google Fonts: JetBrains Mono / Inter / DotGothic16 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Font Awesome 6 (Free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -49,18 +49,27 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css?v=20261020">
-  <link rel="stylesheet" href="interface.css?v=20261020">
+  <link rel="stylesheet" href="interface.css?v=20261020-popups">
 </head>
 
 <body class="interface-page">
-  <a href="#main" class="skip-link">Skip to main content</a>
+  <button type="button" class="skip-link" data-focus-workspace>Skip to main content</button>
   <header class="interface-header">
-    <div class="interface-brand"><a href="index.html" class="nav-logo" aria-label="Alexis — Home"><svg class="wordmark" viewBox="0 0 41 7" aria-hidden="true" focusable="false" fill="currentColor"><circle cx="1.5" cy="0.5" r=".34"/><circle cx="2.5" cy="0.5" r=".34"/><circle cx="3.5" cy="0.5" r=".34"/><circle cx="0.5" cy="1.5" r=".34"/><circle cx="4.5" cy="1.5" r=".34"/><circle cx="0.5" cy="2.5" r=".34"/><circle cx="4.5" cy="2.5" r=".34"/><circle cx="0.5" cy="3.5" r=".34"/><circle cx="1.5" cy="3.5" r=".34"/><circle cx="2.5" cy="3.5" r=".34"/><circle cx="3.5" cy="3.5" r=".34"/><circle cx="4.5" cy="3.5" r=".34"/><circle cx="0.5" cy="4.5" r=".34"/><circle cx="4.5" cy="4.5" r=".34"/><circle cx="0.5" cy="5.5" r=".34"/><circle cx="4.5" cy="5.5" r=".34"/><circle cx="0.5" cy="6.5" r=".34"/><circle cx="4.5" cy="6.5" r=".34"/><circle cx="6.5" cy="0.5" r=".34"/><circle cx="6.5" cy="1.5" r=".34"/><circle cx="6.5" cy="2.5" r=".34"/><circle cx="6.5" cy="3.5" r=".34"/><circle cx="6.5" cy="4.5" r=".34"/><circle cx="6.5" cy="5.5" r=".34"/><circle cx="6.5" cy="6.5" r=".34"/><circle cx="7.5" cy="6.5" r=".34"/><circle cx="8.5" cy="6.5" r=".34"/><circle cx="9.5" cy="6.5" r=".34"/><circle cx="10.5" cy="6.5" r=".34"/><circle cx="12.5" cy="0.5" r=".34"/><circle cx="13.5" cy="0.5" r=".34"/><circle cx="14.5" cy="0.5" r=".34"/><circle cx="15.5" cy="0.5" r=".34"/><circle cx="16.5" cy="0.5" r=".34"/><circle cx="12.5" cy="1.5" r=".34"/><circle cx="12.5" cy="2.5" r=".34"/><circle cx="12.5" cy="3.5" r=".34"/><circle cx="13.5" cy="3.5" r=".34"/><circle cx="14.5" cy="3.5" r=".34"/><circle cx="15.5" cy="3.5" r=".34"/><circle cx="12.5" cy="4.5" r=".34"/><circle cx="12.5" cy="5.5" r=".34"/><circle cx="12.5" cy="6.5" r=".34"/><circle cx="13.5" cy="6.5" r=".34"/><circle cx="14.5" cy="6.5" r=".34"/><circle cx="15.5" cy="6.5" r=".34"/><circle cx="16.5" cy="6.5" r=".34"/><circle cx="18.5" cy="0.5" r=".34"/><circle cx="22.5" cy="0.5" r=".34"/><circle cx="18.5" cy="1.5" r=".34"/><circle cx="22.5" cy="1.5" r=".34"/><circle cx="19.5" cy="2.5" r=".34"/><circle cx="21.5" cy="2.5" r=".34"/><circle cx="20.5" cy="3.5" r=".34"/><circle cx="19.5" cy="4.5" r=".34"/><circle cx="21.5" cy="4.5" r=".34"/><circle cx="18.5" cy="5.5" r=".34"/><circle cx="22.5" cy="5.5" r=".34"/><circle cx="18.5" cy="6.5" r=".34"/><circle cx="22.5" cy="6.5" r=".34"/><circle cx="24.5" cy="0.5" r=".34"/><circle cx="25.5" cy="0.5" r=".34"/><circle cx="26.5" cy="0.5" r=".34"/><circle cx="27.5" cy="0.5" r=".34"/><circle cx="28.5" cy="0.5" r=".34"/><circle cx="26.5" cy="1.5" r=".34"/><circle cx="26.5" cy="2.5" r=".34"/><circle cx="26.5" cy="3.5" r=".34"/><circle cx="26.5" cy="4.5" r=".34"/><circle cx="26.5" cy="5.5" r=".34"/><circle cx="24.5" cy="6.5" r=".34"/><circle cx="25.5" cy="6.5" r=".34"/><circle cx="26.5" cy="6.5" r=".34"/><circle cx="27.5" cy="6.5" r=".34"/><circle cx="28.5" cy="6.5" r=".34"/><circle cx="31.5" cy="0.5" r=".34"/><circle cx="32.5" cy="0.5" r=".34"/><circle cx="33.5" cy="0.5" r=".34"/><circle cx="34.5" cy="0.5" r=".34"/><circle cx="30.5" cy="1.5" r=".34"/><circle cx="30.5" cy="2.5" r=".34"/><circle cx="31.5" cy="3.5" r=".34"/><circle cx="32.5" cy="3.5" r=".34"/><circle cx="33.5" cy="3.5" r=".34"/><circle cx="34.5" cy="4.5" r=".34"/><circle cx="34.5" cy="5.5" r=".34"/><circle cx="30.5" cy="6.5" r=".34"/><circle cx="31.5" cy="6.5" r=".34"/><circle cx="32.5" cy="6.5" r=".34"/><circle cx="33.5" cy="6.5" r=".34"/><circle cx="38.5" cy="5.5" r=".34"/><circle cx="39.5" cy="5.5" r=".34"/><circle cx="38.5" cy="6.5" r=".34"/><circle cx="39.5" cy="6.5" r=".34"/></svg></a><span class="interface-brand__divider" aria-hidden="true">/</span><span class="interface-brand__name">INTERFACE</span></div>
+    <div class="interface-brand"><button type="button" class="nav-logo" data-interface-home aria-label="Alexis — Home"><svg class="wordmark" viewBox="0 0 41 7" aria-hidden="true" focusable="false" fill="currentColor"><circle cx="1.5" cy="0.5" r=".34"/><circle cx="2.5" cy="0.5" r=".34"/><circle cx="3.5" cy="0.5" r=".34"/><circle cx="0.5" cy="1.5" r=".34"/><circle cx="4.5" cy="1.5" r=".34"/><circle cx="0.5" cy="2.5" r=".34"/><circle cx="4.5" cy="2.5" r=".34"/><circle cx="0.5" cy="3.5" r=".34"/><circle cx="1.5" cy="3.5" r=".34"/><circle cx="2.5" cy="3.5" r=".34"/><circle cx="3.5" cy="3.5" r=".34"/><circle cx="4.5" cy="3.5" r=".34"/><circle cx="0.5" cy="4.5" r=".34"/><circle cx="4.5" cy="4.5" r=".34"/><circle cx="0.5" cy="5.5" r=".34"/><circle cx="4.5" cy="5.5" r=".34"/><circle cx="0.5" cy="6.5" r=".34"/><circle cx="4.5" cy="6.5" r=".34"/><circle cx="6.5" cy="0.5" r=".34"/><circle cx="6.5" cy="1.5" r=".34"/><circle cx="6.5" cy="2.5" r=".34"/><circle cx="6.5" cy="3.5" r=".34"/><circle cx="6.5" cy="4.5" r=".34"/><circle cx="6.5" cy="5.5" r=".34"/><circle cx="6.5" cy="6.5" r=".34"/><circle cx="7.5" cy="6.5" r=".34"/><circle cx="8.5" cy="6.5" r=".34"/><circle cx="9.5" cy="6.5" r=".34"/><circle cx="10.5" cy="6.5" r=".34"/><circle cx="12.5" cy="0.5" r=".34"/><circle cx="13.5" cy="0.5" r=".34"/><circle cx="14.5" cy="0.5" r=".34"/><circle cx="15.5" cy="0.5" r=".34"/><circle cx="16.5" cy="0.5" r=".34"/><circle cx="12.5" cy="1.5" r=".34"/><circle cx="12.5" cy="2.5" r=".34"/><circle cx="12.5" cy="3.5" r=".34"/><circle cx="13.5" cy="3.5" r=".34"/><circle cx="14.5" cy="3.5" r=".34"/><circle cx="15.5" cy="3.5" r=".34"/><circle cx="12.5" cy="4.5" r=".34"/><circle cx="12.5" cy="5.5" r=".34"/><circle cx="12.5" cy="6.5" r=".34"/><circle cx="13.5" cy="6.5" r=".34"/><circle cx="14.5" cy="6.5" r=".34"/><circle cx="15.5" cy="6.5" r=".34"/><circle cx="16.5" cy="6.5" r=".34"/><circle cx="18.5" cy="0.5" r=".34"/><circle cx="22.5" cy="0.5" r=".34"/><circle cx="18.5" cy="1.5" r=".34"/><circle cx="22.5" cy="1.5" r=".34"/><circle cx="19.5" cy="2.5" r=".34"/><circle cx="21.5" cy="2.5" r=".34"/><circle cx="20.5" cy="3.5" r=".34"/><circle cx="19.5" cy="4.5" r=".34"/><circle cx="21.5" cy="4.5" r=".34"/><circle cx="18.5" cy="5.5" r=".34"/><circle cx="22.5" cy="5.5" r=".34"/><circle cx="18.5" cy="6.5" r=".34"/><circle cx="22.5" cy="6.5" r=".34"/><circle cx="24.5" cy="0.5" r=".34"/><circle cx="25.5" cy="0.5" r=".34"/><circle cx="26.5" cy="0.5" r=".34"/><circle cx="27.5" cy="0.5" r=".34"/><circle cx="28.5" cy="0.5" r=".34"/><circle cx="26.5" cy="1.5" r=".34"/><circle cx="26.5" cy="2.5" r=".34"/><circle cx="26.5" cy="3.5" r=".34"/><circle cx="26.5" cy="4.5" r=".34"/><circle cx="26.5" cy="5.5" r=".34"/><circle cx="24.5" cy="6.5" r=".34"/><circle cx="25.5" cy="6.5" r=".34"/><circle cx="26.5" cy="6.5" r=".34"/><circle cx="27.5" cy="6.5" r=".34"/><circle cx="28.5" cy="6.5" r=".34"/><circle cx="31.5" cy="0.5" r=".34"/><circle cx="32.5" cy="0.5" r=".34"/><circle cx="33.5" cy="0.5" r=".34"/><circle cx="34.5" cy="0.5" r=".34"/><circle cx="30.5" cy="1.5" r=".34"/><circle cx="30.5" cy="2.5" r=".34"/><circle cx="31.5" cy="3.5" r=".34"/><circle cx="32.5" cy="3.5" r=".34"/><circle cx="33.5" cy="3.5" r=".34"/><circle cx="34.5" cy="4.5" r=".34"/><circle cx="34.5" cy="5.5" r=".34"/><circle cx="30.5" cy="6.5" r=".34"/><circle cx="31.5" cy="6.5" r=".34"/><circle cx="32.5" cy="6.5" r=".34"/><circle cx="33.5" cy="6.5" r=".34"/><circle cx="38.5" cy="5.5" r=".34"/><circle cx="39.5" cy="5.5" r=".34"/><circle cx="38.5" cy="6.5" r=".34"/><circle cx="39.5" cy="6.5" r=".34"/></svg></button><span class="interface-brand__divider" aria-hidden="true">/</span><span class="interface-brand__name">INTERFACE</span></div>
     <div class="interface-location"><span class="signal-dot" aria-hidden="true"></span>Davao City, PH <span class="interface-location__separator">/</span> Personal workspace</div>
-    <nav class="interface-navigation" aria-label="Portfolio navigation"><a href="about.html">Reading view <span aria-hidden="true">↗</span></a><a href="game.html">Playground <span aria-hidden="true">↗</span></a><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Change theme"><i class="fa-solid fa-moon" aria-hidden="true"></i></button></nav>
+    <div class="interface-status" aria-label="System status">
+      <div class="interface-clock" id="liveClock" aria-label="System clock">
+        <span class="clock-time font-dot">00:00:00</span>
+        <span class="clock-zone font-dot">PHT</span>
+      </div>
+      <div class="status-badge"><span class="signal-dot signal-dot--active" aria-hidden="true"></span><span class="font-dot">ONLINE</span></div>
+    </div>
+    <nav class="interface-navigation" aria-label="Portfolio navigation">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Change theme"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+    </nav>
   </header>
 
-  <main class="interface-workspace" id="main">
+  <main class="interface-workspace" id="main" tabindex="-1">
     <div class="interface-home" id="interfaceHome">
       <div class="workspace-meta"><span>PERSONAL PORTFOLIO / 2026</span><span class="workspace-hint">Click an application to explore <span aria-hidden="true">↘</span></span></div>
       <div class="workspace-grid">
@@ -68,54 +77,236 @@
           <div class="profile-chip"><img src="2x2.jpg" width="720" height="720" alt="" fetchpriority="high"><div><p>Alexis Genille S. Palicte</p><span>BSIT student &amp; aspiring developer</span></div></div>
           <h1 id="interfaceTitle">A curious mind.<br>An open<br><span class="dot-text">interface.</span></h1>
           <p class="workspace-description">I build for the web, explore software, and learn by making things. Welcome to my little corner of the internet.</p>
-          <a href="about.html#projects" data-open-app="projects" class="btn btn--primary">Explore my projects <span aria-hidden="true">↗</span></a>
+          <button type="button" data-open-app="projects" class="btn btn--primary">Explore my projects <span aria-hidden="true">↗</span></button>
           <p class="workspace-education">3rd-year BSIT / University of Mindanao</p>
         </section>
         <section class="application-launcher" aria-labelledby="launcherTitle">
           <div class="launcher-heading"><h2 id="launcherTitle">Make yourself at home.</h2><span>( 04 )</span></div>
-          <nav class="app-grid" aria-label="Portfolio applications"><a class="app-tile" href="about.html#profile" data-open-app="about">
+          <nav class="app-grid" aria-label="Portfolio applications"><button type="button" class="app-tile" data-open-app="about">
   <span class="app-tile__top"><span>001 / APPLICATION</span><span class="app-tile__arrow" aria-hidden="true">↗</span></span>
   <svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><circle cx="24" cy="16" r="8"/><path d="M9 42v-5a15 15 0 0 1 30 0v5M6 9V5h4M38 5h4v4"/></svg><span class="app-tile__name">About</span><span class="app-tile__description">The person behind the code.</span>
   <span class="app-tile__state">Open window <span aria-hidden="true">+</span></span>
-</a>
-<a class="app-tile" href="about.html#projects" data-open-app="projects">
+</button>
+<button type="button" class="app-tile" data-open-app="projects">
   <span class="app-tile__top"><span>002 / APPLICATION</span><span class="app-tile__arrow" aria-hidden="true">↗</span></span>
   <svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M7 16h27v27H7zM14 10V5h27v27h-5M7 25h27"/><circle cx="13" cy="20.5" r="1" fill="currentColor" stroke="none"/></svg><span class="app-tile__name">Projects</span><span class="app-tile__description">Four ideas, made real.</span>
   <span class="app-tile__state">Open window <span aria-hidden="true">+</span></span>
-</a>
-<a class="app-tile" href="about.html#toolkit" data-open-app="skills">
+</button>
+<button type="button" class="app-tile" data-open-app="skills">
   <span class="app-tile__top"><span>003 / APPLICATION</span><span class="app-tile__arrow" aria-hidden="true">↗</span></span>
   <svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 17V6h11M31 6h11v11M42 31v11H31M17 42H6V31"/><path d="m19 17-7 7 7 7m10-14 7 7-7 7M26 13l-4 22"/></svg><span class="app-tile__name">Skills</span><span class="app-tile__description">The tools I build with.</span>
   <span class="app-tile__state">Open window <span aria-hidden="true">+</span></span>
-</a>
-<a class="app-tile" href="about.html#contact" data-open-app="contact">
+</button>
+<button type="button" class="app-tile" data-open-app="contact">
   <span class="app-tile__top"><span>004 / APPLICATION</span><span class="app-tile__arrow" aria-hidden="true">↗</span></span>
   <svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 8h36v26H23L12 43v-9H6zM14 18h20M14 25h12"/></svg><span class="app-tile__name">Contact</span><span class="app-tile__description">Start a conversation.</span>
   <span class="app-tile__state">Open window <span aria-hidden="true">+</span></span>
-</a></nav>
+</button></nav>
           <p class="launcher-help"><span class="signal-dot" aria-hidden="true"></span><span class="desktop-help">Open. Move. Explore. Each window is yours to arrange.</span><span class="mobile-help">Tap an app to explore. Return here whenever you like.</span></p>
         </section>
       </div>
       <div class="workspace-notes">
-        <a class="workspace-latest" href="about.html#projects" data-open-app="projects" data-project="0"><span class="micro-label">IN FOCUS / LATEST PROJECT</span><strong>Veritas Core</strong><span>College demo <span aria-hidden="true">↗</span></span></a>
+        <button type="button" class="workspace-latest" data-open-app="projects" data-project="0"><span class="micro-label">IN FOCUS / LATEST PROJECT</span><strong>Veritas Core</strong><span>College demo <span aria-hidden="true">↗</span></span></button>
         <div class="workspace-principle"><span class="micro-label">THE APPROACH</span><p>Thoughtful code.<br>Useful experiences.</p><svg viewBox="0 0 80 40" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="24" cy="8" r="3"/><circle cx="40" cy="8" r="3"/><circle cx="56" cy="8" r="3"/><circle cx="72" cy="8" r="3"/><circle cx="8" cy="24" r="3"/><circle cx="24" cy="24" r="3"/><circle cx="40" cy="24" r="3"/><circle cx="56" cy="24" r="3"/><circle cx="72" cy="24" r="3"/></svg></div>
       </div>
-      <div class="workspace-links"><a href="about.html">Prefer a page? Read the portfolio ?</a><a href="game.html">Take a break. Visit the playground ?</a></div>
-      <noscript><p class="no-script-note">The application interface uses JavaScript. <a href="about.html">Read the full portfolio</a>, or use any application link above to go directly to that section.</p></noscript>
+      <div class="workspace-telemetry" aria-label="System telemetry">
+        <span><span class="signal-dot signal-dot--active" aria-hidden="true"></span>NOTHING OS INSPIRED INTERFACE // SINGLE-PAGE ONLY</span>
+        <span>LOCATION // 07.07° N, 125.61° E // DAVAO CITY, PH</span>
+        <span>BUILD // HTML5 • CSS3 • JAVASCRIPT • ZERO RUNTIME DEPENDENCIES</span>
+      </div>
+      <noscript><p class="no-script-note">Enable JavaScript to explore About, Projects, Skills, and Contact in this interface.</p></noscript>
     </div>
     <div class="window-layer" id="windowLayer" aria-label="Open portfolio windows"></div>
+
+    <!-- Embedded Single-Page Portfolio Templates -->
+    <template id="template-about">
+      <div class="about-bio">
+        <div class="about-bio__text">
+          <p class="micro-label">001 / PROFILE SPECIFICATION</p>
+          <h2>Hi, I'm <span>Alexis Genille S. Palicte</span></h2>
+          <p class="about-bio__lead"><strong>3rd-Year BSIT Student | Aspiring Web Developer</strong></p>
+          <p>I'm a 3rd-year Bachelor of Science in Information Technology (BSIT) student at the University of Mindanao in Davao City, Philippines, with a growing passion for web development, software development, and technology.</p>
+          <p>I enjoy transforming ideas into functional, efficient, and user-friendly digital solutions. Through academic projects and hands-on experience, I've been developing my skills in programming, system development, database management, and interface design.</p>
+          <p>I'm constantly exploring new technologies, improving my problem-solving abilities, and challenging myself to build better applications. I believe that great software should not only work well but also provide meaningful experiences for its users.</p>
+          <p>As an aspiring developer, my goal is to continue growing, gain real-world experience, collaborate on meaningful projects, and create innovative solutions that make everyday tasks easier for people and businesses.</p>
+          <div class="cta-btns">
+            <button type="button" data-open-app="projects" class="btn btn--primary">See my projects <span aria-hidden="true">↗</span></button>
+            <a href="https://www.linkedin.com/in/alexis-genille-palicte-8194b232a" target="_blank" rel="noopener noreferrer" class="btn btn--outline">Connect on LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="about-bio__img-wrap">
+          <img src="2x2.jpg" alt="Profile photo of Alexis Genille S. Palicte" class="about-bio__img" width="720" height="720" loading="eager">
+          <p class="about-photo-caption">Alexis Palicte <span>Student &amp; developer</span></p>
+        </div>
+      </div>
+      <div class="info-cards">
+        <article class="info-card">
+          <span class="info-card__num font-dot">01</span>
+          <h3>Education</h3>
+          <p>BS Information Technology, 3rd Year</p>
+        </article>
+        <article class="info-card">
+          <span class="info-card__num font-dot">02</span>
+          <h3>University</h3>
+          <p>University of Mindanao</p>
+        </article>
+        <article class="info-card">
+          <span class="info-card__num font-dot">03</span>
+          <h3>Location</h3>
+          <p>Davao City, Philippines</p>
+        </article>
+      </div>
+    </template>
+
+    <template id="template-projects">
+      <div class="projects-grid">
+        <article class="project-card project-card--veritas" id="veritas-core">
+          <div class="project-card__cover" aria-hidden="true"><span>VERITAS<br><strong>CORE</strong></span><span class="project-card__cover-caption">01 / Web application<br>College demo</span></div>
+          <div class="project-card__body">
+            <p class="project-card__eyebrow">01 / Latest project</p>
+            <h3><a href="https://veritas-core-college-demo.onrender.com/" target="_blank" rel="noopener noreferrer">Veritas Core &mdash; College Demo <span aria-hidden="true">↗</span></a></h3>
+            <p>My latest web project: Veritas Core. Explore the college demo through the hosted application.</p>
+            <div class="project-tags"><span class="project-tag">Web Application</span><span class="project-tag project-tag--accent">College Demo</span></div>
+            <a class="project-card__link" href="https://veritas-core-college-demo.onrender.com/" target="_blank" rel="noopener noreferrer">Live Demo <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card project-card--featured" id="dormihub">
+          <figure class="project-preview"><img src="Screenshot 2026-08-04 190849.png" alt="Screenshot of the DormiHub Dormitory Management System interface" class="project-card__img" width="1910" height="860" loading="eager"></figure>
+          <div class="project-card__body">
+            <p class="project-card__eyebrow">02 / Featured project</p>
+            <h3><a href="https://dormihub.onrender.com/" target="_blank" rel="noopener noreferrer">DormiHub – Dormitory Management System <span aria-hidden="true">↗</span></a></h3>
+            <p>A Laravel platform for dormitory room tracking, resident applications, and maintenance requests. Role-based dashboards give admins, staff, and residents the tools they need, from managing rooms and pricing to browsing availability.</p>
+            <div class="project-tags">
+              <span class="project-tag">Laravel</span>
+              <span class="project-tag">Full-Stack</span>
+              <span class="project-tag">MySQL</span>
+              <span class="project-tag">MVC</span>
+            </div>
+            <a class="project-card__link" href="https://dormihub.onrender.com/" target="_blank" rel="noopener noreferrer" aria-label="DormiHub live demo (opens in a new tab)">Live Demo <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+
+        <article class="project-card" id="pos-system">
+          <div class="project-card__icon" aria-hidden="true"><span>03 / Desktop software</span><strong class="dot-text font-dot">POS.</strong><span>Python × PyQt</span></div>
+          <div class="project-card__body">
+            <p class="project-card__eyebrow">03 / Academic System</p>
+            <h3>POS Computer Parts and Services System</h3>
+            <p>A comprehensive Point of Sale system built with Python and PyQt for managing computer hardware inventory, sales transactions, customer data, and service tracking with real-time reporting capabilities.</p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">PyQt</span>
+              <span class="project-tag">MySQL</span>
+              <span class="project-tag">Inventory</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" id="portfolio-website">
+          <div class="project-card__icon" aria-hidden="true"><span>04 / Single-Page System</span><strong class="dot-text font-dot">ALEXIS.</strong><span>HTML / CSS / JavaScript</span></div>
+          <div class="project-card__body">
+            <p class="project-card__eyebrow">04 / Portfolio System</p>
+            <h3>Personal Portfolio Website</h3>
+            <p>A modern, responsive single-page personal portfolio website inspired by Nothing OS, built with HTML, CSS, and JavaScript. Features a window management system with drag, minimize, maximize, and responsive mobile overlay.</p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag project-tag--accent">Nothing OS</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </template>
+
+    <template id="template-skills">
+      <div class="skills-grid">
+        <article class="skill-card">
+          <div class="skill-card__top">
+            <span class="skill-card__version font-dot">Web applications</span>
+          </div>
+          <h3>Laravel</h3>
+          <p>Building web applications with MVC architecture, database integration, and authentication.</p>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-card__top">
+            <span class="skill-card__version font-dot">Cross-platform</span>
+          </div>
+          <h3>Flutter / Dart</h3>
+          <p>Creating cross-platform applications with Dart and reusable UI widgets.</p>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-card__top">
+            <span class="skill-card__version font-dot">Structure</span>
+          </div>
+          <h3>HTML</h3>
+          <p>Building semantic, accessible, and well-structured web pages.</p>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-card__top">
+            <span class="skill-card__version font-dot">Design</span>
+          </div>
+          <h3>CSS</h3>
+          <p>Creating responsive layouts and modern, clean visual designs.</p>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-card__top">
+            <span class="skill-card__version font-dot">Applications</span>
+          </div>
+          <h3>Java</h3>
+          <p>Object-oriented programming and building desktop applications.</p>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-card__top">
+            <span class="skill-card__version font-dot">Foundations</span>
+          </div>
+          <h3>Networking</h3>
+          <p>Understanding network fundamentals, configuration, and security basics.</p>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-card__top">
+            <span class="skill-card__version font-dot">Desktop &amp; scripting</span>
+          </div>
+          <h3>Python / PyQt</h3>
+          <p>Developing applications and scripting with Python and PyQt.</p>
+        </article>
+      </div>
+    </template>
+
+    <template id="template-contact">
+      <div class="contact-grid">
+        <p class="micro-label">004 / TRANSMISSION CHANNELS</p>
+        <h2>Good things start<br>with a <span class="dot-text font-dot">conversation.</span></h2>
+        <div>
+          <p>Have a project in mind, something to share, or a new idea to explore? Let's talk.</p>
+          <a href="https://www.linkedin.com/in/alexis-genille-palicte-8194b232a" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Connect on LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="contact-links">
+        <span>Direct channels</span>
+        <a href="https://github.com/Alexis20050" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="https://www.facebook.com/kyrie.strong.3" target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+        <a href="mailto:a.palicte.558276@umindanao.edu.ph">Email ↗</a>
+      </div>
+    </template>
   </main>
 
   <footer class="interface-dock" id="interfaceDock">
     <div class="dock-status"><span class="signal-dot" aria-hidden="true"></span><span id="windowCount">YOUR SPACE TO EXPLORE</span></div>
-    <nav class="dock-apps" aria-label="Application launcher"><a href="about.html#profile" class="dock-app" data-open-app="about" aria-label="Open About"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><circle cx="24" cy="16" r="8"/><path d="M9 42v-5a15 15 0 0 1 30 0v5M6 9V5h4M38 5h4v4"/></svg><span>About</span><span class="dock-indicator" aria-hidden="true"></span></a>
-<a href="about.html#projects" class="dock-app" data-open-app="projects" aria-label="Open Projects"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M7 16h27v27H7zM14 10V5h27v27h-5M7 25h27"/><circle cx="13" cy="20.5" r="1" fill="currentColor" stroke="none"/></svg><span>Projects</span><span class="dock-indicator" aria-hidden="true"></span></a>
-<a href="about.html#toolkit" class="dock-app" data-open-app="skills" aria-label="Open Skills"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 17V6h11M31 6h11v11M42 31v11H31M17 42H6V31"/><path d="m19 17-7 7 7 7m10-14 7 7-7 7M26 13l-4 22"/></svg><span>Skills</span><span class="dock-indicator" aria-hidden="true"></span></a>
-<a href="about.html#contact" class="dock-app" data-open-app="contact" aria-label="Open Contact"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 8h36v26H23L12 43v-9H6zM14 18h20M14 25h12"/></svg><span>Contact</span><span class="dock-indicator" aria-hidden="true"></span></a></nav>
-    <div class="dock-tools"><button type="button" id="showHome" class="home-control" hidden aria-label="Minimize all windows and show home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg><span>Home</span></button><span class="dock-copyright">© 2026 ALEXIS.</span></div>
+    <nav class="dock-apps" aria-label="Application launcher"><button type="button" class="dock-app" data-open-app="about" aria-label="Open About"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><circle cx="24" cy="16" r="8"/><path d="M9 42v-5a15 15 0 0 1 30 0v5M6 9V5h4M38 5h4v4"/></svg><span>About</span><span class="dock-indicator" aria-hidden="true"></span></button>
+<button type="button" class="dock-app" data-open-app="projects" aria-label="Open Projects"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M7 16h27v27H7zM14 10V5h27v27h-5M7 25h27"/><circle cx="13" cy="20.5" r="1" fill="currentColor" stroke="none"/></svg><span>Projects</span><span class="dock-indicator" aria-hidden="true"></span></button>
+<button type="button" class="dock-app" data-open-app="skills" aria-label="Open Skills"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 17V6h11M31 6h11v11M42 31v11H31M17 42H6V31"/><path d="m19 17-7 7 7 7m10-14 7 7-7 7M26 13l-4 22"/></svg><span>Skills</span><span class="dock-indicator" aria-hidden="true"></span></button>
+<button type="button" class="dock-app" data-open-app="contact" aria-label="Open Contact"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 8h36v26H23L12 43v-9H6zM14 18h20M14 25h12"/></svg><span>Contact</span><span class="dock-indicator" aria-hidden="true"></span></button></nav>
+    <div class="dock-tools"><button type="button" id="showHome" data-interface-home class="home-control" hidden aria-label="Minimize all windows and show home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg><span>Home</span></button><span class="dock-copyright">© 2026 ALEXIS.</span></div>
   </footer>
   <p id="interfaceStatus" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
   <script src="script.js?v=20261020"></script>
-  <script src="interface.js?v=20261020"></script>
+  <script src="interface.js?v=20261020-popups"></script>
 </body>
 </html>

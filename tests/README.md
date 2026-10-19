@@ -37,19 +37,22 @@ directory as `alexis-interface-*.png`.
 Coverage includes single-instance apps, stacking, pointer and keyboard movement,
 viewport bounds, minimize/restore state, maximize/restore geometry, focus return,
 project selection, clipboard success/failure, eight viewport widths in both
-themes, mobile app switching and scrolling, reduced motion, load failure/retry,
-repeated close/reopen, JavaScript-disabled navigation, and the original game.
+themes, mobile app switching and scrolling, reduced motion, template error/retry,
+repeated close/reopen, unchanged URLs, every application launcher, Home and skip
+controls, embedded email, JavaScript-disabled behavior, and the original game.
 Tests use the existing real assets and links; external demo uptime is not tested.
 
 ## Content and window lifecycle
 
-`about.html` is the source for biography, skills, projects, and contact information.
-`interface.js` fetches it once on demand and copies known content nodes into the
-applications. The readable page remains available if JavaScript or the request
-fails. Keep its `.about-bio`, `.info-cards`, `.skills-grid`, `.project-card`,
-`.contact-grid`, and `.contact-links` selectors when editing content.
+The `template-about`, `template-projects`, `template-skills`, and `template-contact`
+elements in `index.html` hold the application's content. `interface.js` clones the
+requested template without fetching or navigating to another page. Keep their
+`.about-bio`, `.info-cards`, `.skills-grid`, `.project-card`, `.contact-grid`, and
+`.contact-links` selectors when editing content. Application launchers and Home
+are buttons, so modifier clicks have no internal URL to open. Project screenshots
+stay inside the project detail view. Error recovery retries inside the window.
 
 Each window has one state record and its own `AbortController`. Minimizing keeps
 its DOM and state; closing aborts its listeners and removes it. The workspace
 observer clamps windows after resizing. On phones, only the active window is
-visible and interactive; the launcher and reading-view link stay available.
+visible and interactive; the application launcher and Home control stay available.

@@ -1,5 +1,5 @@
 /* ALEXIS / INTERFACE — dependency-free portfolio window manager.
-   about.html remains the canonical, readable source of portfolio content. */
+   Application content lives in the homepage's embedded templates. */
 'use strict';
 
 (() => {
@@ -17,27 +17,15 @@
   const home = document.getElementById('interfaceHome');
   const status = document.getElementById('interfaceStatus');
   const lifetime = new AbortController();
-  let sourcePromise;
 
   function announce(message) { status.textContent = message; }
 
-  function loadSource() {
-    if (!sourcePromise) {
-      sourcePromise = fetch('about.html?v=20261020', { signal: lifetime.signal })
-        .then(response => {
-          if (!response.ok) throw new Error('Portfolio content is unavailable.');
-          return response.text();
-        })
-        .then(html => {
-          const source = new DOMParser().parseFromString(html, 'text/html');
-          if (!source.querySelector('.about-bio') || source.querySelectorAll('.project-card').length !== 4) {
-            throw new Error('Portfolio content could not be read.');
-          }
-          return source;
-        })
-        .catch(error => { sourcePromise = null; throw error; });
+  function loadSource(id) {
+    const template = document.getElementById(`template-${id}`);
+    if (!(template instanceof HTMLTemplateElement)) {
+      throw new Error('Missing portfolio application content.');
     }
-    return sourcePromise;
+    return template.content;
   }
 
   // Only clone known nodes from our own static page; no scripts are executed.
@@ -61,9 +49,18 @@
       this.drag = null;
       const options = { signal: lifetime.signal };
       document.addEventListener('click', event => {
+        if (event.target.closest('[data-interface-home]')) {
+          event.preventDefault();
+          this.showHome();
+          return;
+        }
+        if (event.target.closest('[data-focus-workspace]')) {
+          event.preventDefault();
+          document.getElementById('main').focus({ preventScroll: true });
+          return;
+        }
         const launcher = event.target.closest('[data-open-app]');
-        // Preserve native open-in-new-tab and fallback navigation.
-        if (!launcher || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (!launcher || event.button !== 0) return;
         event.preventDefault();
         this.open(launcher.dataset.openApp, launcher, launcher.dataset.project);
       }, options);
@@ -86,18 +83,19 @@
       }, options);
       layer.addEventListener('keydown', event => this.keydown(event), options);
       document.getElementById('showHome').hidden = false;
-      document.getElementById('showHome').addEventListener('click', () => {
-        this.endDrag();
-        this.windows.forEach(win => { win.minimized = true; });
-        this.active = null;
-        this.sync();
-        document.querySelector('.app-tile').focus({ preventScroll: true });
-        announce('Home. Your open applications are saved in the launcher.');
-      }, options);
       this.resizeObserver = new ResizeObserver(() => this.resize());
       this.resizeObserver.observe(layer);
       mobile.addEventListener('change', () => this.resize(), options);
       document.body.classList.add('interface-ready');
+    }
+
+    showHome() {
+      this.endDrag();
+      this.windows.forEach(win => { win.minimized = true; });
+      this.active = null;
+      this.sync();
+      document.querySelector('.app-tile').focus({ preventScroll: true });
+      announce('Home. Your open applications are saved in the launcher.');
     }
 
     bounds() { return { width: layer.clientWidth, height: layer.clientHeight }; }
@@ -200,7 +198,7 @@
           </div>
         </header>
         <div class="window-content" tabindex="0" aria-label="${config.name} content" aria-busy="true"><p class="window-loading">Opening ${config.name.toLowerCase()}…</p></div>
-        <footer class="window-footer"><span>ALEXIS / ${config.name.toUpperCase()}</span><a href="about.html#${config.anchor}">Read as a page ↗</a></footer>`;
+        <footer class="window-footer"><span>ALEXIS // ${config.name.toUpperCase()}</span><span class="window-footer__status"><span class="signal-dot signal-dot--active" aria-hidden="true"></span> ACTIVE WORKSPACE</span></footer>`;
       const win = { id, element, opener, rect, order: 0, minimized: false, maximized: false, closing: false, selectedProject: Number(project || 0), abort: new AbortController() };
       this.windows.set(id, win);
       layer.append(element);
@@ -210,17 +208,14 @@
       this.populate(win);
     }
 
-    async populate(win) {
+    populate(win) {
       const content = win.element.querySelector('.window-content');
       try {
-        const source = await loadSource();
+        const source = loadSource(win.id);
         if (win.abort.signal.aborted) return;
         content.replaceChildren();
         if (win.id === 'about') {
           content.append(copy(source, '.about-bio'), copy(source, '.info-cards'));
-          const projects = content.querySelector('a[href="#projects"]');
-          projects.href = 'about.html#projects';
-          projects.dataset.openApp = 'projects';
         } else if (win.id === 'skills') {
           content.innerHTML = '<p class="micro-label">TECHNICAL INDEX / 07 TECHNOLOGIES</p><h3 class="app-content-title">The tools behind<br>the work.</h3>';
           content.append(copy(source, '.skills-grid'));
@@ -229,21 +224,27 @@
         } else if (win.id === 'contact') {
           content.append(copy(source, '.contact-grid'), copy(source, '.contact-links'));
           const github = source.querySelector('.contact-links a[href*="github.com"]');
+          const emailAddr = 'a.palicte.558276@umindanao.edu.ph';
           const row = document.createElement('div');
           row.className = 'copy-profile';
           const button = document.createElement('button');
           button.type = 'button';
           button.className = 'copy-button';
           button.textContent = 'Copy GitHub profile link';
+          const emailBtn = document.createElement('button');
+          emailBtn.type = 'button';
+          emailBtn.className = 'copy-button copy-button--email';
+          emailBtn.textContent = 'Copy email address';
           const feedback = document.createElement('p');
           feedback.className = 'copy-feedback';
           feedback.setAttribute('role', 'status');
-          row.append(button, feedback);
+          row.append(button, emailBtn, feedback);
           content.append(row);
-          button.addEventListener('click', async () => {
+
+          const copyValue = async (val) => {
             try {
               if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
-              await navigator.clipboard.writeText(github.href);
+              await navigator.clipboard.writeText(val);
               if (win.abort.signal.aborted) return;
               feedback.textContent = 'Copied. Ready to paste.';
             } catch {
@@ -253,17 +254,20 @@
               label.textContent = 'Copy manually: ';
               const input = document.createElement('input');
               input.readOnly = true;
-              input.value = github.href;
+              input.value = val;
               label.append(input);
               feedback.append(label);
               input.focus();
               input.select();
             }
-          }, { signal: win.abort.signal });
+          };
+
+          button.addEventListener('click', () => copyValue(github ? github.href : 'https://github.com/Alexis20050'), { signal: win.abort.signal });
+          emailBtn.addEventListener('click', () => copyValue(emailAddr), { signal: win.abort.signal });
         }
       } catch {
         if (win.abort.signal.aborted) return;
-        content.innerHTML = `<div class="window-error"><h3>Let's take the direct route.</h3><p>This window couldn't load its content. The complete portfolio is also available as a regular page.</p><a class="btn btn--primary" href="about.html#${applications[win.id].anchor}">Read ${applications[win.id].name.toLowerCase()} ↗</a><button class="retry-button" type="button">Try again</button></div>`;
+        content.innerHTML = '<div class="window-error"><h3>This window couldn\'t open.</h3><p>Please try opening its content again.</p><button class="retry-button" type="button">Try again</button></div>';
         content.querySelector('.retry-button').addEventListener('click', () => {
           content.setAttribute('aria-busy', 'true');
           this.populate(win);
@@ -435,6 +439,24 @@
       lifetime.abort();
     }
   }
+
+  function initNothingClock() {
+    const clock = document.getElementById('liveClock');
+    if (!clock) return;
+    const timeEl = clock.querySelector('.clock-time');
+    const zoneEl = clock.querySelector('.clock-zone');
+    function tick() {
+      const d = new Date();
+      const h = String(d.getHours()).padStart(2, '0');
+      const m = String(d.getMinutes()).padStart(2, '0');
+      const s = String(d.getSeconds()).padStart(2, '0');
+      if (timeEl) timeEl.textContent = `${h}:${m}:${s}`;
+      if (zoneEl) zoneEl.textContent = 'PHT';
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+  initNothingClock();
 
   const manager = new WindowManager();
   window.addEventListener('pagehide', event => { if (!event.persisted) manager.destroy(); }, { signal: lifetime.signal });

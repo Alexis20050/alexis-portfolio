@@ -10,6 +10,7 @@
   --accent: #d71920;
   --font-main: 'Inter', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-dot: 'DotGothic16', 'JetBrains Mono', monospace;
   --nav-height: 88px;
   --ease: 180ms ease;
   color-scheme: light;
@@ -50,6 +51,7 @@ h2 { font-size: clamp(2.25rem, 4.8vw, 4.5rem); }
 @supports (background-clip: text) or (-webkit-background-clip: text) {
   .dot-text { background: radial-gradient(circle, currentColor 1.1px, transparent 1.35px) 0 0 / 3.2px 3.2px; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 }
+.font-dot { font-family: var(--font-dot); letter-spacing: .04em; }
 /* Navigation */
 .navbar { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--line); height: var(--nav-height); }
 .navbar__inner { display: flex; height: 100%; align-items: center; gap: 32px; }
