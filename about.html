@@ -31,19 +31,24 @@
   <!-- Font Awesome 6 (Free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Favicon (inline SVG "AP") -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e14'/><text x='50' y='65' font-size='38' font-family='monospace' font-weight='bold' fill='%23f0a93c' text-anchor='middle'>AP</text></svg>">
+  <!-- Personal wordmark favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <!-- Theme-color meta (read by browsers for UI tinting) -->
-  <meta name="theme-color" content="#0a0e14" id="metaThemeColor">
+  <meta name="theme-color" content="#f5f5f3" id="metaThemeColor">
 
   <!-- Anti-FOUC: apply saved theme before page renders -->
   <script>
-    (function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('metaThemeColor');if(m)m.setAttribute('content','#f6f7fa');}else if(!t&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('metaThemeColor');if(m)m.setAttribute('content','#f6f7fa');}}catch(e){}})();
+    (function () {
+      var theme = 'light';
+      try { var saved = localStorage.getItem('theme'); if (saved === 'dark' || saved === 'light') theme = saved; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#f5f5f3');
+    })();
   </script>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261020">
 </head>
 
 <body class="about-page">
@@ -52,12 +57,15 @@
   <!-- ==================== NAVIGATION BAR ==================== -->
   <header class="navbar">
     <div class="container navbar__inner">
-      <a href="index.html" class="nav-logo" aria-label="Alexis Palicte — Home"><span class="brand-mark">AP</span><span class="brand-name">Alexis Palicte<small>Developer</small></span></a>
+      <a href="index.html" class="nav-logo" aria-label="Alexis — Home"><svg class="wordmark" viewBox="0 0 41 7" aria-hidden="true" focusable="false" fill="currentColor"><circle cx="1.5" cy="0.5" r=".34"/><circle cx="2.5" cy="0.5" r=".34"/><circle cx="3.5" cy="0.5" r=".34"/><circle cx="0.5" cy="1.5" r=".34"/><circle cx="4.5" cy="1.5" r=".34"/><circle cx="0.5" cy="2.5" r=".34"/><circle cx="4.5" cy="2.5" r=".34"/><circle cx="0.5" cy="3.5" r=".34"/><circle cx="1.5" cy="3.5" r=".34"/><circle cx="2.5" cy="3.5" r=".34"/><circle cx="3.5" cy="3.5" r=".34"/><circle cx="4.5" cy="3.5" r=".34"/><circle cx="0.5" cy="4.5" r=".34"/><circle cx="4.5" cy="4.5" r=".34"/><circle cx="0.5" cy="5.5" r=".34"/><circle cx="4.5" cy="5.5" r=".34"/><circle cx="0.5" cy="6.5" r=".34"/><circle cx="4.5" cy="6.5" r=".34"/><circle cx="6.5" cy="0.5" r=".34"/><circle cx="6.5" cy="1.5" r=".34"/><circle cx="6.5" cy="2.5" r=".34"/><circle cx="6.5" cy="3.5" r=".34"/><circle cx="6.5" cy="4.5" r=".34"/><circle cx="6.5" cy="5.5" r=".34"/><circle cx="6.5" cy="6.5" r=".34"/><circle cx="7.5" cy="6.5" r=".34"/><circle cx="8.5" cy="6.5" r=".34"/><circle cx="9.5" cy="6.5" r=".34"/><circle cx="10.5" cy="6.5" r=".34"/><circle cx="12.5" cy="0.5" r=".34"/><circle cx="13.5" cy="0.5" r=".34"/><circle cx="14.5" cy="0.5" r=".34"/><circle cx="15.5" cy="0.5" r=".34"/><circle cx="16.5" cy="0.5" r=".34"/><circle cx="12.5" cy="1.5" r=".34"/><circle cx="12.5" cy="2.5" r=".34"/><circle cx="12.5" cy="3.5" r=".34"/><circle cx="13.5" cy="3.5" r=".34"/><circle cx="14.5" cy="3.5" r=".34"/><circle cx="15.5" cy="3.5" r=".34"/><circle cx="12.5" cy="4.5" r=".34"/><circle cx="12.5" cy="5.5" r=".34"/><circle cx="12.5" cy="6.5" r=".34"/><circle cx="13.5" cy="6.5" r=".34"/><circle cx="14.5" cy="6.5" r=".34"/><circle cx="15.5" cy="6.5" r=".34"/><circle cx="16.5" cy="6.5" r=".34"/><circle cx="18.5" cy="0.5" r=".34"/><circle cx="22.5" cy="0.5" r=".34"/><circle cx="18.5" cy="1.5" r=".34"/><circle cx="22.5" cy="1.5" r=".34"/><circle cx="19.5" cy="2.5" r=".34"/><circle cx="21.5" cy="2.5" r=".34"/><circle cx="20.5" cy="3.5" r=".34"/><circle cx="19.5" cy="4.5" r=".34"/><circle cx="21.5" cy="4.5" r=".34"/><circle cx="18.5" cy="5.5" r=".34"/><circle cx="22.5" cy="5.5" r=".34"/><circle cx="18.5" cy="6.5" r=".34"/><circle cx="22.5" cy="6.5" r=".34"/><circle cx="24.5" cy="0.5" r=".34"/><circle cx="25.5" cy="0.5" r=".34"/><circle cx="26.5" cy="0.5" r=".34"/><circle cx="27.5" cy="0.5" r=".34"/><circle cx="28.5" cy="0.5" r=".34"/><circle cx="26.5" cy="1.5" r=".34"/><circle cx="26.5" cy="2.5" r=".34"/><circle cx="26.5" cy="3.5" r=".34"/><circle cx="26.5" cy="4.5" r=".34"/><circle cx="26.5" cy="5.5" r=".34"/><circle cx="24.5" cy="6.5" r=".34"/><circle cx="25.5" cy="6.5" r=".34"/><circle cx="26.5" cy="6.5" r=".34"/><circle cx="27.5" cy="6.5" r=".34"/><circle cx="28.5" cy="6.5" r=".34"/><circle cx="31.5" cy="0.5" r=".34"/><circle cx="32.5" cy="0.5" r=".34"/><circle cx="33.5" cy="0.5" r=".34"/><circle cx="34.5" cy="0.5" r=".34"/><circle cx="30.5" cy="1.5" r=".34"/><circle cx="30.5" cy="2.5" r=".34"/><circle cx="31.5" cy="3.5" r=".34"/><circle cx="32.5" cy="3.5" r=".34"/><circle cx="33.5" cy="3.5" r=".34"/><circle cx="34.5" cy="4.5" r=".34"/><circle cx="34.5" cy="5.5" r=".34"/><circle cx="30.5" cy="6.5" r=".34"/><circle cx="31.5" cy="6.5" r=".34"/><circle cx="32.5" cy="6.5" r=".34"/><circle cx="33.5" cy="6.5" r=".34"/><circle cx="38.5" cy="5.5" r=".34"/><circle cx="39.5" cy="5.5" r=".34"/><circle cx="38.5" cy="6.5" r=".34"/><circle cx="39.5" cy="6.5" r=".34"/></svg></a>
 
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="index.html" class="nav-link">home.js</a>
-        <a href="about.html" class="nav-link active" aria-current="page">about.js</a>
-        <a href="game.html" class="nav-link">game.js</a>
+        <a href="index.html" class="nav-link">Interface</a>
+        <a href="about.html#profile" class="nav-link">About</a>
+        <a href="about.html#toolkit" class="nav-link">Skills</a>
+        <a href="about.html#projects" class="nav-link">Projects</a>
+        <a href="game.html" class="nav-link">Playground</a>
+        <a href="#contact" class="nav-link">Contact <span aria-hidden="true">↗</span></a>
       </nav>
 
       <div class="nav-actions">
@@ -78,16 +86,16 @@
     <section class="section about-intro" id="profile">
       <div class="container">
         <div class="section__header fade-in">
-          <p class="section__eyebrow">The person behind the work</p>
-          <h1>Behind the code.<br><span>The person building it.</span></h1>
+          <p class="section__eyebrow">002 / About</p>
+          <h1>A curious mind.<br><span class="dot-text">A hands-on approach.</span></h1>
           <p>A little about me, the tools I use, and the projects that put them to work.</p>
           <nav class="about-jump" aria-label="About page sections">
-            <a href="#profile">01 / Profile</a><a href="#toolkit">02 / Toolkit</a><a href="#projects">03 / Projects</a>
+            <a href="#profile">002 / Profile</a><a href="#toolkit">003 / Stack</a><a href="#projects">004 / Projects</a>
           </nav>
         </div>
 
         <div class="about-profile win fade-in">
-          <div class="panel-heading"><span class="panel-heading__index" aria-hidden="true">01</span><span class="panel-heading__file">about.js</span><span class="panel-heading__detail">AP / Profile</span></div>
+
           <div class="about-bio">
           <div class="about-bio__text">
             <h2>Hi, I'm <span>Alexis Genille S. Palicte</span></h2>
@@ -103,7 +111,7 @@
           </div>
 
           <div class="about-bio__img-wrap">
-            <img src="2x2.jpg" alt="Profile photo of Alexis Genille S. Palicte" class="about-bio__img">
+            <img src="2x2.jpg" alt="Profile photo of Alexis Genille S. Palicte" class="about-bio__img" width="720" height="720" decoding="async">
             <p class="about-photo-caption">Alexis Palicte <span>Student &amp; developer</span></p>
           </div>
         </div>
@@ -137,8 +145,8 @@
     <section class="section about-toolkit" id="toolkit">
       <div class="container">
         <div class="section__header fade-in">
-          <p class="section__eyebrow">My toolkit</p>
-          <h2>Skills I build with</h2><p>From the interface to the logic behind it.</p>
+          <p class="section__eyebrow">003 / Stack</p>
+          <h2>The tools behind the work.</h2><p>From the interface to the logic behind it.</p>
         </div>
 
         <div class="skills-grid">
@@ -156,7 +164,7 @@
               <div class="skill-card__icon skill-card__icon--flutter"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></div>
               <span class="skill-card__version">Cross-platform</span>
             </div>
-            <h3>Flutter</h3>
+            <h3>Flutter / Dart</h3>
             <p>Creating cross-platform applications with Dart and reusable UI widgets.</p>
           </article>
 
@@ -201,7 +209,7 @@
               <div class="skill-card__icon skill-card__icon--python"><i class="fa-brands fa-python" aria-hidden="true"></i></div>
               <span class="skill-card__version">Desktop &amp; scripting</span>
             </div>
-            <h3>Python</h3>
+            <h3>Python / PyQt</h3>
             <p>Developing applications and scripting with Python and PyQt.</p>
           </article>
         </div>
@@ -209,16 +217,16 @@
     </section>
 
     <!-- ---------- PROJECTS SECTION ---------- -->
-    <section class="section" id="projects">
+    <section class="section dark-surface" id="projects">
       <div class="container">
         <div class="section__header fade-in">
-          <p class="section__eyebrow">Selected work</p>
-          <h2>Ideas turned into projects</h2><p>Four projects across web development and desktop software. Explore the live demos below.</p>
+          <p class="section__eyebrow">004 / Projects</p>
+          <h2>Selected work<span class="heading-count">(04)</span></h2><p>From web applications to desktop tools. Built to put learning into practice.</p>
         </div>
 
         <div class="projects-grid">
-          <article class="project-card project-card--featured fade-in">
-            <div class="project-card__cover" aria-hidden="true"><span>VERITAS<br><strong>CORE</strong></span><span class="project-card__cover-caption">College demo / Web application</span></div>
+          <article class="project-card project-card--veritas fade-in">
+            <div class="project-card__cover" aria-hidden="true"><span>VERITAS<br><strong>CORE</strong></span><span class="project-card__cover-caption">01 / Web application<br>College demo</span></div>
             <div class="project-card__body">
               <p class="project-card__eyebrow">Latest project</p>
               <h3><a href="https://veritas-core-college-demo.onrender.com/" target="_blank" rel="noopener noreferrer">Veritas Core &mdash; College Demo</a></h3>
@@ -229,10 +237,10 @@
           </article>
 
           <!-- DormiHub — Featured Project -->
-          <article class="project-card fade-in">
-            <img src="Screenshot 2026-08-04 190849.png" alt="Screenshot of the DormiHub Dormitory Management System interface" class="project-card__img">
+          <article class="project-card project-card--featured fade-in" id="dormihub">
+            <a class="project-preview" href="Screenshot 2026-08-04 190849.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size DormiHub screenshot"><img src="Screenshot 2026-08-04 190849.png" alt="Screenshot of the DormiHub Dormitory Management System interface" class="project-card__img" width="1910" height="860" loading="lazy" decoding="async"></a>
             <div class="project-card__body">
-              <h3><a href="https://dormihub.onrender.com/" target="_blank" rel="noopener noreferrer">DormiHub – Dormitory Management System</a></h3>
+              <p class="project-card__eyebrow">02 / Featured project</p><h3><a href="https://dormihub.onrender.com/" target="_blank" rel="noopener noreferrer">DormiHub – Dormitory Management System</a></h3>
               <p>A Laravel platform for dormitory room tracking, resident applications, and maintenance requests. Role-based dashboards give admins, staff, and residents the tools they need, from managing rooms and pricing to browsing availability.</p>
               <div class="project-tags">
                 <span class="project-tag">Laravel</span>
@@ -246,7 +254,7 @@
 
           <!-- Mandatory POS Project -->
           <article class="project-card fade-in">
-            <div class="project-card__icon"><i class="fa-solid fa-cash-register" aria-hidden="true"></i></div>
+            <div class="project-card__icon" aria-hidden="true"><span>03 / Desktop software</span><strong class="dot-text">POS.</strong><span>Python × PyQt</span></div>
             <div class="project-card__body">
               <h3>POS Computer Parts and Services System</h3>
               <p>
@@ -265,7 +273,7 @@
 
           <!-- Personal Portfolio Website -->
           <article class="project-card fade-in">
-            <div class="project-card__icon project-card__icon--green"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></div>
+            <div class="project-card__icon" aria-hidden="true"><span>04 / Personal website</span><strong class="dot-text">ALEXIS.</strong><span>HTML / CSS / JavaScript</span></div>
             <div class="project-card__body">
               <h3>Personal Portfolio Website</h3>
               <p>
@@ -283,19 +291,25 @@
 
         </div>
 
-        <div class="about-contact">
-          <div><p class="section__eyebrow">What's next?</p><h2>Have an idea in mind?</h2><p>Let's talk about web development, projects, or learning something new.</p></div>
-          <a href="https://www.linkedin.com/in/alexis-genille-palicte-8194b232a" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Connect on LinkedIn <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-        </div>
+
       </div>
     </section>
+<section class="contact-section" id="contact">
+  <div class="container">
+    <p class="section__eyebrow">005 / Contact</p>
+    <div class="contact-grid"><h2>Good things start<br>with a <span class="dot-text">conversation.</span></h2>
+    <div><p>Have a project in mind, something to share, or a new idea to explore? Let's talk.</p>
+    <a href="https://www.linkedin.com/in/alexis-genille-palicte-8194b232a" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div></div>
+    <div class="contact-links"><span>Find me elsewhere</span><a href="https://github.com/Alexis20050" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.facebook.com/kyrie.strong.3" target="_blank" rel="noopener noreferrer">Facebook ↗</a></div>
+  </div>
+</section>
   </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__status">
-        <span class="footer__brand">AP / Developer</span>
+        <a class="footer__brand" href="index.html">ALEXIS.</a>
         <span>Davao City, Philippines</span>
         <span class="footer__tagline">&copy; 2026 Alexis Genille S. Palicte</span>
       </div>
@@ -314,6 +328,6 @@
   </footer>
 
   <!-- Shared JavaScript -->
-  <script src="script.js"></script>
+  <script src="script.js?v=20261020"></script>
 </body>
 </html>

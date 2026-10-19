@@ -66,23 +66,47 @@
   const navLinks = document.getElementById('navLinks');
   if (!navLinks) return;
 
-  const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+  const normalize = path => path.replace(/\.html$/, '').replace(/\/$/, '') || '/index';
+  const links = Array.from(navLinks.querySelectorAll('a.nav-link'));
+  const currentPath = normalize(window.location.pathname);
+  const sections = [];
 
-  navLinks.querySelectorAll('a.nav-link').forEach(function (link) {
-    const href = link.getAttribute('href');
+  function activate(activeLink, value) {
+    links.forEach(link => {
+      link.classList.toggle('active', link === activeLink);
+      if (link === activeLink) link.setAttribute('aria-current', value);
+      else link.removeAttribute('aria-current');
+    });
+  }
 
-    // Remove any hardcoded active class first
-    if (link.classList.contains('active')) {
-      link.classList.remove('active');
-      link.removeAttribute('aria-current');
-    }
-
-    // Only update aria-current on the active link
-    if (href === currentFile) {
-      link.classList.add('active');
-      link.setAttribute('aria-current', 'page');
+  links.forEach(link => {
+    const url = new URL(link.href);
+    if (normalize(url.pathname) !== currentPath) return;
+    if (!url.hash) activate(link, 'page');
+    else {
+      const section = document.getElementById(url.hash.slice(1));
+      if (section) sections.push({ section, link });
     }
   });
+
+  // Select the section at the reading position, including Vercel clean URLs.
+  if (sections.length) {
+    let queued = false;
+    const update = () => {
+      queued = false;
+      const readingLine = Math.min(window.innerHeight * .35, 240);
+      const active = sections.find(({ section }) => {
+        const box = section.getBoundingClientRect();
+        return box.top <= readingLine && box.bottom > readingLine;
+      });
+      activate(active ? active.link : null, 'location');
+    };
+    window.addEventListener('scroll', () => {
+      if (!queued) { queued = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
 })();
 
 /* ============================================================
@@ -117,65 +141,6 @@
 })();
 
 /* ============================================================
-   4. TERMINAL TYPING EFFECT (index.html hero)
-   ============================================================ */
-(function initTerminalTyping() {
-  const terminal = document.querySelector('.terminal');
-  if (!terminal) return;
-
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const commands = terminal.querySelectorAll('.terminal__cmd');
-  const reveals = terminal.querySelectorAll('.terminal__out, .terminal__actions, .cta-btns');
-
-  // Hide the reveal blocks until their command has "typed"
-  reveals.forEach(function (el) { el.style.visibility = 'hidden'; });
-
-  if (prefersReducedMotion) {
-    reveals.forEach(function (el) { el.style.visibility = 'visible'; });
-    return;
-  }
-
-  const originalText = [];
-  commands.forEach(function (el) {
-    originalText.push(el.textContent);
-    el.textContent = '';
-  });
-
-  let cmdIndex = 0;
-  let charIndex = 0;
-
-  function typeNextChar() {
-    if (cmdIndex >= commands.length) return;
-
-    const currentCmd = commands[cmdIndex];
-    const text = originalText[cmdIndex];
-
-    if (charIndex < text.length) {
-      currentCmd.textContent += text.charAt(charIndex);
-      charIndex += 1;
-      setTimeout(typeNextChar, 28);
-    } else {
-      // Reveal the output block(s) tied to this command line
-      const line = currentCmd.closest('.terminal__line');
-      let next = line ? line.nextElementSibling : null;
-      while (next && (next.classList.contains('terminal__out') || next.classList.contains('terminal__actions') || next.classList.contains('cta-btns'))) {
-        next.style.visibility = 'visible';
-        const afterNext = next.nextElementSibling;
-        if (afterNext && afterNext.classList.contains('terminal__line')) break;
-        next = afterNext;
-      }
-
-      cmdIndex += 1;
-      charIndex = 0;
-      setTimeout(typeNextChar, 280);
-    }
-  }
-
-  setTimeout(typeNextChar, 400);
-})();
-
-/* ============================================================
    5. ROCK PAPER SCISSORS GAME (game.html)
    ============================================================ */
 (function initRPSGame() {
@@ -202,15 +167,30 @@
   if (!isGamePage) return;
 
   const CHOICES = {
-    rock: { emoji: '🪨', name: 'Rock' },
-    paper: { emoji: '📄', name: 'Paper' },
-    scissors: { emoji: '✂️', name: 'Scissors' }
+    rock: { emoji: '◯', name: 'Rock' },
+    paper: { emoji: '▱', name: 'Paper' },
+    scissors: { emoji: '✕', name: 'Scissors' }
   };
 
   const WIN_SCORE = 5;
   let playerScore = 0;
   let computerScore = 0;
   let gameActive = true;
+  let previousFocus = null;
+  const backgroundElements = [document.querySelector('.navbar'), document.querySelector('.game__card'), document.querySelector('.footer')];
+
+  function setDialogOpen(open) {
+    if (open) previousFocus = document.activeElement;
+    overlayEl.classList.toggle('show', open);
+    backgroundElements.forEach(element => { if (element) element.inert = open; });
+    if (open) playAgainBtn.focus();
+    else if (previousFocus) previousFocus.focus();
+  }
+
+  overlayEl.addEventListener('keydown', function (event) {
+    // The dialog has a single action; keep keyboard focus within it.
+    if (event.key === 'Tab') { event.preventDefault(); playAgainBtn.focus(); }
+  });
 
   function getRandomChoice() {
     const keys = Object.keys(CHOICES);
@@ -248,12 +228,12 @@
     // Update score & message
     if (result === 'win') {
       playerScore += 1;
-      roundResultEl.textContent = '🎉 You win this round!';
+      roundResultEl.textContent = 'You win this round!';
     } else if (result === 'lose') {
       computerScore += 1;
-      roundResultEl.textContent = '😅 Computer wins this round!';
+      roundResultEl.textContent = 'Computer wins this round!';
     } else {
-      roundResultEl.textContent = '🤝 It\'s a draw!';
+      roundResultEl.textContent = 'It\'s a draw!';
     }
 
     playerScoreEl.textContent = playerScore;
@@ -267,18 +247,18 @@
       gameActive = false;
 
       if (playerScore > computerScore) {
-        gameOverTitleEl.textContent = '🏆 You Win!';
+        gameOverTitleEl.textContent = 'You win!';
         gameOverMessageEl.textContent =
           'Congratulations! You reached 5 points first. Final score: You ' +
           playerScore + ' – ' + computerScore + ' Computer.';
       } else {
-        gameOverTitleEl.textContent = '🤖 Computer Wins!';
+        gameOverTitleEl.textContent = 'Computer wins!';
         gameOverMessageEl.textContent =
           'Better luck next time! Final score: You ' +
           playerScore + ' – ' + computerScore + ' Computer.';
       }
 
-      overlayEl.classList.add('show');
+      setDialogOpen(true);
     }
   }
 
@@ -290,9 +270,9 @@
     playerScoreEl.textContent = '0';
     computerScoreEl.textContent = '0';
 
-    playerEmojiEl.textContent = '❔';
+    playerEmojiEl.textContent = '—';
     playerNameEl.textContent = 'Your pick';
-    computerEmojiEl.textContent = '❔';
+    computerEmojiEl.textContent = '—';
     computerNameEl.textContent = 'Computer';
 
     playerBoxEl.classList.remove('has-choice');
@@ -318,14 +298,14 @@
 
   // Play Again (from game-over overlay)
   playAgainBtn.addEventListener('click', function () {
-    overlayEl.classList.remove('show');
+    setDialogOpen(false);
     resetGame('Choose your move to start!');
   });
 
   // Close game-over overlay on Escape
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' && overlayEl.classList.contains('show')) {
-      overlayEl.classList.remove('show');
+      setDialogOpen(false);
       resetGame('Choose your move to start!');
     }
   });
@@ -340,12 +320,12 @@
 
   var metaThemeColor = document.getElementById('metaThemeColor');
 
-  var DARK_BG = '#0a0e14';
-  var LIGHT_BG = '#f6f7fa';
+  var DARK_BG = '#0a0a0a';
+  var LIGHT_BG = '#f5f5f3';
   var TRANSITION_DURATION = 300; // ms, matches CSS theme-transition
 
   function getTheme() {
-    return document.documentElement.getAttribute('data-theme') || 'dark';
+    return document.documentElement.getAttribute('data-theme') || 'light';
   }
 
   function updateIcon() {
@@ -364,7 +344,7 @@
       document.documentElement.setAttribute('data-theme', 'light');
       if (metaThemeColor) metaThemeColor.setAttribute('content', LIGHT_BG);
     } else {
-      document.documentElement.removeAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', 'dark');
       if (metaThemeColor) metaThemeColor.setAttribute('content', DARK_BG);
     }
 
@@ -377,7 +357,7 @@
     }
 
     try {
-      localStorage.setItem('theme', theme);
+      if (fromUser) localStorage.setItem('theme', theme);
     } catch (e) { /* storage full or private mode */ }
 
     updateIcon();
@@ -405,76 +385,4 @@
       }
     });
   }
-})();
-
-/* Move the home panel with its file tab, pointer or keyboard. */
-(function initMovablePortfolio() {
-  const handle = document.getElementById('portfolioDrag');
-  const reset = document.getElementById('portfolioReset');
-  if (!handle || !reset) return;
-  const panel = handle.closest('.editor-panel');
-  const stage = panel.closest('.hero');
-  let x = 0;
-  let y = 0;
-  let drag = null;
-
-  function move(nextX, nextY) {
-    const box = panel.getBoundingClientRect();
-    const area = stage.getBoundingClientRect();
-    const left = box.left - x;
-    const top = box.top - y;
-    const minX = 12 - left;
-    const maxX = document.documentElement.clientWidth - 12 - left - box.width;
-    const minY = area.top + 12 - top;
-    const maxY = area.bottom - 12 - top - box.height;
-    x = Math.max(minX, Math.min(Math.max(minX, maxX), nextX));
-    y = Math.max(minY, Math.min(Math.max(minY, maxY), nextY));
-    panel.style.setProperty('--panel-x', x + 'px');
-    panel.style.setProperty('--panel-y', y + 'px');
-  }
-
-  function endDrag() {
-    if (drag && handle.hasPointerCapture(drag.id)) handle.releasePointerCapture(drag.id);
-    drag = null;
-    panel.classList.remove('is-dragging');
-  }
-
-  function resetPosition() {
-    endDrag();
-    x = 0;
-    y = 0;
-    panel.style.removeProperty('--panel-x');
-    panel.style.removeProperty('--panel-y');
-  }
-
-  handle.addEventListener('pointerdown', function (event) {
-    if (!event.isPrimary || event.button !== 0) return;
-    // Finish the entrance animation before measuring drag boundaries.
-    panel.classList.add('visible');
-    panel.style.transform = 'none';
-    handle.focus({ preventScroll: true });
-    drag = { id: event.pointerId, startX: event.clientX, startY: event.clientY, x: x, y: y };
-    handle.setPointerCapture(event.pointerId);
-    panel.classList.add('is-dragging');
-  });
-  handle.addEventListener('pointermove', function (event) {
-    if (!drag || drag.id !== event.pointerId) return;
-    move(drag.x + event.clientX - drag.startX, drag.y + event.clientY - drag.startY);
-  });
-  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (name) {
-    handle.addEventListener(name, endDrag);
-  });
-  handle.addEventListener('keydown', function (event) {
-    const step = event.shiftKey ? 40 : 10;
-    const directions = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] };
-    if (directions[event.key]) {
-      event.preventDefault();
-      move(x + directions[event.key][0], y + directions[event.key][1]);
-    } else if (event.key === 'Escape') {
-      event.preventDefault();
-      resetPosition();
-    }
-  });
-  reset.addEventListener('click', resetPosition);
-  window.addEventListener('resize', resetPosition);
 })();

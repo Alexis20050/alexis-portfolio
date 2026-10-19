@@ -31,33 +31,41 @@
   <!-- Font Awesome 6 (Free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Favicon (inline SVG "AP") -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e14'/><text x='50' y='65' font-size='38' font-family='monospace' font-weight='bold' fill='%23f0a93c' text-anchor='middle'>AP</text></svg>">
+  <!-- Personal wordmark favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <!-- Theme-color meta (read by browsers for UI tinting) -->
-  <meta name="theme-color" content="#0a0e14" id="metaThemeColor">
+  <meta name="theme-color" content="#f5f5f3" id="metaThemeColor">
 
   <!-- Anti-FOUC: apply saved theme before page renders -->
   <script>
-    (function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('metaThemeColor');if(m)m.setAttribute('content','#f6f7fa');}else if(!t&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('metaThemeColor');if(m)m.setAttribute('content','#f6f7fa');}}catch(e){}})();
+    (function () {
+      var theme = 'light';
+      try { var saved = localStorage.getItem('theme'); if (saved === 'dark' || saved === 'light') theme = saved; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#f5f5f3');
+    })();
   </script>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261020">
 </head>
 
-<body>
+<body class="game-page">
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- ==================== NAVIGATION BAR ==================== -->
   <header class="navbar">
     <div class="container navbar__inner">
-      <a href="index.html" class="nav-logo" aria-label="Alexis Palicte — Home"><span class="brand-mark">AP</span><span class="brand-name">Alexis Palicte<small>Developer</small></span></a>
+      <a href="index.html" class="nav-logo" aria-label="Alexis — Home"><svg class="wordmark" viewBox="0 0 41 7" aria-hidden="true" focusable="false" fill="currentColor"><circle cx="1.5" cy="0.5" r=".34"/><circle cx="2.5" cy="0.5" r=".34"/><circle cx="3.5" cy="0.5" r=".34"/><circle cx="0.5" cy="1.5" r=".34"/><circle cx="4.5" cy="1.5" r=".34"/><circle cx="0.5" cy="2.5" r=".34"/><circle cx="4.5" cy="2.5" r=".34"/><circle cx="0.5" cy="3.5" r=".34"/><circle cx="1.5" cy="3.5" r=".34"/><circle cx="2.5" cy="3.5" r=".34"/><circle cx="3.5" cy="3.5" r=".34"/><circle cx="4.5" cy="3.5" r=".34"/><circle cx="0.5" cy="4.5" r=".34"/><circle cx="4.5" cy="4.5" r=".34"/><circle cx="0.5" cy="5.5" r=".34"/><circle cx="4.5" cy="5.5" r=".34"/><circle cx="0.5" cy="6.5" r=".34"/><circle cx="4.5" cy="6.5" r=".34"/><circle cx="6.5" cy="0.5" r=".34"/><circle cx="6.5" cy="1.5" r=".34"/><circle cx="6.5" cy="2.5" r=".34"/><circle cx="6.5" cy="3.5" r=".34"/><circle cx="6.5" cy="4.5" r=".34"/><circle cx="6.5" cy="5.5" r=".34"/><circle cx="6.5" cy="6.5" r=".34"/><circle cx="7.5" cy="6.5" r=".34"/><circle cx="8.5" cy="6.5" r=".34"/><circle cx="9.5" cy="6.5" r=".34"/><circle cx="10.5" cy="6.5" r=".34"/><circle cx="12.5" cy="0.5" r=".34"/><circle cx="13.5" cy="0.5" r=".34"/><circle cx="14.5" cy="0.5" r=".34"/><circle cx="15.5" cy="0.5" r=".34"/><circle cx="16.5" cy="0.5" r=".34"/><circle cx="12.5" cy="1.5" r=".34"/><circle cx="12.5" cy="2.5" r=".34"/><circle cx="12.5" cy="3.5" r=".34"/><circle cx="13.5" cy="3.5" r=".34"/><circle cx="14.5" cy="3.5" r=".34"/><circle cx="15.5" cy="3.5" r=".34"/><circle cx="12.5" cy="4.5" r=".34"/><circle cx="12.5" cy="5.5" r=".34"/><circle cx="12.5" cy="6.5" r=".34"/><circle cx="13.5" cy="6.5" r=".34"/><circle cx="14.5" cy="6.5" r=".34"/><circle cx="15.5" cy="6.5" r=".34"/><circle cx="16.5" cy="6.5" r=".34"/><circle cx="18.5" cy="0.5" r=".34"/><circle cx="22.5" cy="0.5" r=".34"/><circle cx="18.5" cy="1.5" r=".34"/><circle cx="22.5" cy="1.5" r=".34"/><circle cx="19.5" cy="2.5" r=".34"/><circle cx="21.5" cy="2.5" r=".34"/><circle cx="20.5" cy="3.5" r=".34"/><circle cx="19.5" cy="4.5" r=".34"/><circle cx="21.5" cy="4.5" r=".34"/><circle cx="18.5" cy="5.5" r=".34"/><circle cx="22.5" cy="5.5" r=".34"/><circle cx="18.5" cy="6.5" r=".34"/><circle cx="22.5" cy="6.5" r=".34"/><circle cx="24.5" cy="0.5" r=".34"/><circle cx="25.5" cy="0.5" r=".34"/><circle cx="26.5" cy="0.5" r=".34"/><circle cx="27.5" cy="0.5" r=".34"/><circle cx="28.5" cy="0.5" r=".34"/><circle cx="26.5" cy="1.5" r=".34"/><circle cx="26.5" cy="2.5" r=".34"/><circle cx="26.5" cy="3.5" r=".34"/><circle cx="26.5" cy="4.5" r=".34"/><circle cx="26.5" cy="5.5" r=".34"/><circle cx="24.5" cy="6.5" r=".34"/><circle cx="25.5" cy="6.5" r=".34"/><circle cx="26.5" cy="6.5" r=".34"/><circle cx="27.5" cy="6.5" r=".34"/><circle cx="28.5" cy="6.5" r=".34"/><circle cx="31.5" cy="0.5" r=".34"/><circle cx="32.5" cy="0.5" r=".34"/><circle cx="33.5" cy="0.5" r=".34"/><circle cx="34.5" cy="0.5" r=".34"/><circle cx="30.5" cy="1.5" r=".34"/><circle cx="30.5" cy="2.5" r=".34"/><circle cx="31.5" cy="3.5" r=".34"/><circle cx="32.5" cy="3.5" r=".34"/><circle cx="33.5" cy="3.5" r=".34"/><circle cx="34.5" cy="4.5" r=".34"/><circle cx="34.5" cy="5.5" r=".34"/><circle cx="30.5" cy="6.5" r=".34"/><circle cx="31.5" cy="6.5" r=".34"/><circle cx="32.5" cy="6.5" r=".34"/><circle cx="33.5" cy="6.5" r=".34"/><circle cx="38.5" cy="5.5" r=".34"/><circle cx="39.5" cy="5.5" r=".34"/><circle cx="38.5" cy="6.5" r=".34"/><circle cx="39.5" cy="6.5" r=".34"/></svg></a>
 
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="index.html" class="nav-link">home.js</a>
-        <a href="about.html" class="nav-link">about.js</a>
-        <a href="game.html" class="nav-link active" aria-current="page">game.js</a>
+        <a href="index.html" class="nav-link">Interface</a>
+        <a href="about.html#profile" class="nav-link">About</a>
+        <a href="about.html#toolkit" class="nav-link">Skills</a>
+        <a href="about.html#projects" class="nav-link">Projects</a>
+        <a href="game.html" class="nav-link">Playground</a>
+        <a href="about.html#contact" class="nav-link">Contact <span aria-hidden="true">↗</span></a>
       </nav>
 
       <div class="nav-actions">
@@ -74,10 +82,10 @@
   <!-- ==================== GAME SECTION ==================== -->
   <main id="main" class="game">
     <div class="game__card win fade-in">
-      <div class="panel-heading"><span class="panel-heading__index" aria-hidden="true">02</span><span class="panel-heading__file">game.js</span><span class="panel-heading__detail">AP / Playground</span></div>
+      <div class="panel-heading"><span class="signal-dot" aria-hidden="true"></span><span>006 / Playground</span><span class="panel-heading__detail">First to 05</span></div>
 
-      <div style="padding: 2rem 2.2rem 2.4rem;">
-      <h1 class="game__title"><i class="fa-solid fa-gamepad" aria-hidden="true" style="color: var(--accent);"></i> Rock Paper Scissors</h1>
+      <div class="game__body">
+      <h1 class="game__title">Rock. Paper.<br><span class="dot-text">Scissors.</span></h1>
       <p class="game__subtitle">Play against the computer. First to 5 wins!</p>
 
       <!-- Scoreboard -->
@@ -95,33 +103,33 @@
       <!-- Choice display -->
       <div class="game__choices" aria-live="polite">
         <div class="game__choice-box" id="playerChoiceBox">
-          <span class="game__emoji" id="playerEmoji">❔</span>
+          <span class="game__emoji" id="playerEmoji">—</span>
           <span class="game__choice-name" id="playerChoiceName">Your pick</span>
         </div>
 
         <span class="game__vs" aria-hidden="true">VS</span>
 
         <div class="game__choice-box" id="computerChoiceBox">
-          <span class="game__emoji" id="computerEmoji">❔</span>
+          <span class="game__emoji" id="computerEmoji">—</span>
           <span class="game__choice-name" id="computerChoiceName">Computer</span>
         </div>
       </div>
 
       <!-- Round result -->
-      <p class="game__result" id="roundResult">Choose your move to start!</p>
+      <p class="game__result" id="roundResult" role="status" aria-live="polite" aria-atomic="true">Choose your move to start!</p>
 
       <!-- Action buttons -->
       <div class="game__actions" role="group" aria-label="Choose your move">
         <button class="game__btn" data-choice="rock" aria-label="Choose Rock">
-          <span class="game__btn-emoji" aria-hidden="true">🪨</span>
+          <span class="game__btn-emoji" aria-hidden="true">◯</span>
           <span class="game__btn-label">Rock</span>
         </button>
         <button class="game__btn" data-choice="paper" aria-label="Choose Paper">
-          <span class="game__btn-emoji" aria-hidden="true">📄</span>
+          <span class="game__btn-emoji" aria-hidden="true">▱</span>
           <span class="game__btn-label">Paper</span>
         </button>
         <button class="game__btn" data-choice="scissors" aria-label="Choose Scissors">
-          <span class="game__btn-emoji" aria-hidden="true">✂️</span>
+          <span class="game__btn-emoji" aria-hidden="true">✕</span>
           <span class="game__btn-label">Scissors</span>
         </button>
       </div>
@@ -136,7 +144,7 @@
     <!-- Game over overlay -->
     <div class="game__over" id="gameOverOverlay" role="dialog" aria-modal="true" aria-labelledby="gameOverTitle">
       <div class="game__over-card">
-        <h3 id="gameOverTitle">Game Over!</h3>
+        <h2 id="gameOverTitle">Game over</h2>
         <p id="gameOverMessage">Final score</p>
         <button class="btn btn--primary" id="playAgainBtn">
           <i class="fa-solid fa-play" aria-hidden="true"></i> Play Again
@@ -149,7 +157,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__status">
-        <span class="footer__brand">AP / Developer</span>
+        <a class="footer__brand" href="index.html">ALEXIS.</a>
         <span>Davao City, Philippines</span>
         <span class="footer__tagline">&copy; 2026 Alexis Genille S. Palicte</span>
       </div>
@@ -168,6 +176,6 @@
   </footer>
 
   <!-- Shared JavaScript -->
-  <script src="script.js"></script>
+  <script src="script.js?v=20261020"></script>
 </body>
 </html>

@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
-  <title>Alexis Genille S. Palicte | Web Developer</title>
+  <title>Alexis / Interface — Developer Portfolio</title>
   <meta name="description" content="Portfolio of Alexis Genille S. Palicte, 3rd-Year BSIT Student at the University of Mindanao and aspiring web developer. Building functional and user-friendly digital solutions.">
   <meta name="keywords" content="Alexis Genille Palicte, BSIT, University of Mindanao, Web Developer, Portfolio, Student">
   <meta name="author" content="Alexis Genille S. Palicte">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Alexis Genille S. Palicte | Web Developer">
+  <meta property="og:title" content="Alexis / Interface — Developer Portfolio">
   <meta property="og:description" content="3rd-Year BSIT Student at the University of Mindanao. Building functional & user-friendly digital solutions.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="2x2.jpg">
@@ -19,7 +19,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Alexis Genille S. Palicte | Web Developer">
+  <meta name="twitter:title" content="Alexis / Interface — Developer Portfolio">
   <meta name="twitter:description" content="3rd-Year BSIT Student at the University of Mindanao.">
   <meta name="twitter:image" content="2x2.jpg">
 
@@ -31,122 +31,91 @@
   <!-- Font Awesome 6 (Free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Favicon (inline SVG "AP") -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e14'/><text x='50' y='65' font-size='38' font-family='monospace' font-weight='bold' fill='%23f0a93c' text-anchor='middle'>AP</text></svg>">
+  <!-- Personal wordmark favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <!-- Theme-color meta (read by browsers for UI tinting) -->
-  <meta name="theme-color" content="#0a0e14" id="metaThemeColor">
+  <meta name="theme-color" content="#f5f5f3" id="metaThemeColor">
 
   <!-- Anti-FOUC: apply saved theme before page renders -->
   <script>
-    (function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('metaThemeColor');if(m)m.setAttribute('content','#f6f7fa');}else if(!t&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');var m=document.getElementById('metaThemeColor');if(m)m.setAttribute('content','#f6f7fa');}}catch(e){}})();
+    (function () {
+      var theme = 'light';
+      try { var saved = localStorage.getItem('theme'); if (saved === 'dark' || saved === 'light') theme = saved; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#f5f5f3');
+    })();
   </script>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261020">
+  <link rel="stylesheet" href="interface.css?v=20261020">
 </head>
 
-<body>
+<body class="interface-page">
   <a href="#main" class="skip-link">Skip to main content</a>
-
-  <!-- ==================== NAVIGATION BAR ==================== -->
-  <header class="navbar">
-    <div class="container navbar__inner">
-      <a href="index.html" class="nav-logo" aria-label="Alexis Palicte — Home"><span class="brand-mark">AP</span><span class="brand-name">Alexis Palicte<small>Developer</small></span></a>
-
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="index.html" class="nav-link active" aria-current="page">home.js</a>
-        <a href="about.html" class="nav-link">about.js</a>
-        <a href="game.html" class="nav-link">game.js</a>
-      </nav>
-
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
-          <i class="fa-solid fa-sun" aria-hidden="true"></i>
-        </button>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
-          <i class="fa-solid fa-bars" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
+  <header class="interface-header">
+    <div class="interface-brand"><a href="index.html" class="nav-logo" aria-label="Alexis — Home"><svg class="wordmark" viewBox="0 0 41 7" aria-hidden="true" focusable="false" fill="currentColor"><circle cx="1.5" cy="0.5" r=".34"/><circle cx="2.5" cy="0.5" r=".34"/><circle cx="3.5" cy="0.5" r=".34"/><circle cx="0.5" cy="1.5" r=".34"/><circle cx="4.5" cy="1.5" r=".34"/><circle cx="0.5" cy="2.5" r=".34"/><circle cx="4.5" cy="2.5" r=".34"/><circle cx="0.5" cy="3.5" r=".34"/><circle cx="1.5" cy="3.5" r=".34"/><circle cx="2.5" cy="3.5" r=".34"/><circle cx="3.5" cy="3.5" r=".34"/><circle cx="4.5" cy="3.5" r=".34"/><circle cx="0.5" cy="4.5" r=".34"/><circle cx="4.5" cy="4.5" r=".34"/><circle cx="0.5" cy="5.5" r=".34"/><circle cx="4.5" cy="5.5" r=".34"/><circle cx="0.5" cy="6.5" r=".34"/><circle cx="4.5" cy="6.5" r=".34"/><circle cx="6.5" cy="0.5" r=".34"/><circle cx="6.5" cy="1.5" r=".34"/><circle cx="6.5" cy="2.5" r=".34"/><circle cx="6.5" cy="3.5" r=".34"/><circle cx="6.5" cy="4.5" r=".34"/><circle cx="6.5" cy="5.5" r=".34"/><circle cx="6.5" cy="6.5" r=".34"/><circle cx="7.5" cy="6.5" r=".34"/><circle cx="8.5" cy="6.5" r=".34"/><circle cx="9.5" cy="6.5" r=".34"/><circle cx="10.5" cy="6.5" r=".34"/><circle cx="12.5" cy="0.5" r=".34"/><circle cx="13.5" cy="0.5" r=".34"/><circle cx="14.5" cy="0.5" r=".34"/><circle cx="15.5" cy="0.5" r=".34"/><circle cx="16.5" cy="0.5" r=".34"/><circle cx="12.5" cy="1.5" r=".34"/><circle cx="12.5" cy="2.5" r=".34"/><circle cx="12.5" cy="3.5" r=".34"/><circle cx="13.5" cy="3.5" r=".34"/><circle cx="14.5" cy="3.5" r=".34"/><circle cx="15.5" cy="3.5" r=".34"/><circle cx="12.5" cy="4.5" r=".34"/><circle cx="12.5" cy="5.5" r=".34"/><circle cx="12.5" cy="6.5" r=".34"/><circle cx="13.5" cy="6.5" r=".34"/><circle cx="14.5" cy="6.5" r=".34"/><circle cx="15.5" cy="6.5" r=".34"/><circle cx="16.5" cy="6.5" r=".34"/><circle cx="18.5" cy="0.5" r=".34"/><circle cx="22.5" cy="0.5" r=".34"/><circle cx="18.5" cy="1.5" r=".34"/><circle cx="22.5" cy="1.5" r=".34"/><circle cx="19.5" cy="2.5" r=".34"/><circle cx="21.5" cy="2.5" r=".34"/><circle cx="20.5" cy="3.5" r=".34"/><circle cx="19.5" cy="4.5" r=".34"/><circle cx="21.5" cy="4.5" r=".34"/><circle cx="18.5" cy="5.5" r=".34"/><circle cx="22.5" cy="5.5" r=".34"/><circle cx="18.5" cy="6.5" r=".34"/><circle cx="22.5" cy="6.5" r=".34"/><circle cx="24.5" cy="0.5" r=".34"/><circle cx="25.5" cy="0.5" r=".34"/><circle cx="26.5" cy="0.5" r=".34"/><circle cx="27.5" cy="0.5" r=".34"/><circle cx="28.5" cy="0.5" r=".34"/><circle cx="26.5" cy="1.5" r=".34"/><circle cx="26.5" cy="2.5" r=".34"/><circle cx="26.5" cy="3.5" r=".34"/><circle cx="26.5" cy="4.5" r=".34"/><circle cx="26.5" cy="5.5" r=".34"/><circle cx="24.5" cy="6.5" r=".34"/><circle cx="25.5" cy="6.5" r=".34"/><circle cx="26.5" cy="6.5" r=".34"/><circle cx="27.5" cy="6.5" r=".34"/><circle cx="28.5" cy="6.5" r=".34"/><circle cx="31.5" cy="0.5" r=".34"/><circle cx="32.5" cy="0.5" r=".34"/><circle cx="33.5" cy="0.5" r=".34"/><circle cx="34.5" cy="0.5" r=".34"/><circle cx="30.5" cy="1.5" r=".34"/><circle cx="30.5" cy="2.5" r=".34"/><circle cx="31.5" cy="3.5" r=".34"/><circle cx="32.5" cy="3.5" r=".34"/><circle cx="33.5" cy="3.5" r=".34"/><circle cx="34.5" cy="4.5" r=".34"/><circle cx="34.5" cy="5.5" r=".34"/><circle cx="30.5" cy="6.5" r=".34"/><circle cx="31.5" cy="6.5" r=".34"/><circle cx="32.5" cy="6.5" r=".34"/><circle cx="33.5" cy="6.5" r=".34"/><circle cx="38.5" cy="5.5" r=".34"/><circle cx="39.5" cy="5.5" r=".34"/><circle cx="38.5" cy="6.5" r=".34"/><circle cx="39.5" cy="6.5" r=".34"/></svg></a><span class="interface-brand__divider" aria-hidden="true">/</span><span class="interface-brand__name">INTERFACE</span></div>
+    <div class="interface-location"><span class="signal-dot" aria-hidden="true"></span>Davao City, PH <span class="interface-location__separator">/</span> Personal workspace</div>
+    <nav class="interface-navigation" aria-label="Portfolio navigation"><a href="about.html">Reading view <span aria-hidden="true">↗</span></a><a href="game.html">Playground <span aria-hidden="true">↗</span></a><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Change theme"><i class="fa-solid fa-moon" aria-hidden="true"></i></button></nav>
   </header>
 
-  <!-- ==================== HERO SECTION ==================== -->
-  <main id="main">
-    <section class="hero">
-      <div class="container hero__inner">
-        <div class="hero__intro editor-panel fade-in">
-          <div class="panel-heading panel-heading--movable">
-            <button class="panel-drag" id="portfolioDrag" type="button" aria-label="Move portfolio panel" aria-describedby="portfolioDragHint">
-              <span class="panel-heading__index" aria-hidden="true">01</span>
-              <span class="panel-heading__file">portfolio.js</span>
-              <span class="panel-drag__hint" aria-hidden="true">Drag to move</span>
-            </button>
-            <button class="panel-reset" id="portfolioReset" type="button" aria-label="Reset portfolio panel position" title="Reset position">&#8634;</button>
-            <span class="sr-only" id="portfolioDragHint">Drag to move, or use the arrow keys. Press Escape to reset the position.</span>
-          </div>
-          <div class="editor-panel__body">
-          <p class="section__eyebrow">Alexis Palicte / Web development</p>
-          <h1 class="hero__headline">Thoughtful code.<br><span>Useful experiences.</span></h1>
-          <p class="hero__introduction">Hi, I'm Alexis Genille S. Palicte.</p>
-          <p class="hero__description">A 3rd-year BSIT student at the University of Mindanao, turning ideas into functional, user-friendly digital solutions.</p>
-          <div class="cta-btns">
-            <a href="about.html#projects" class="btn btn--primary">Explore my work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-            <a href="about.html" class="btn btn--outline">About me</a>
-          </div>
-          <div class="hero__socials">
-              <a href="https://github.com/Alexis20050" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--github">
-                <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
-              </a>
-              <a href="https://www.facebook.com/kyrie.strong.3" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--fb">
-                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Facebook
-              </a>
-              <a href="https://www.linkedin.com/in/alexis-genille-palicte-8194b232a" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--linkedin">
-                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i> LinkedIn
-              </a>
-            </div>
-          <a class="latest-project" href="https://veritas-core-college-demo.onrender.com/" target="_blank" rel="noopener noreferrer">
-            <span><small>Latest project</small><strong>Veritas Core</strong><span>Explore the college demo</span></span>
-            <span class="latest-project__arrow" aria-hidden="true">&#8599;</span>
-          </a>
-        </div>
-
-        </div>
-
-        <!-- Right: Profile image -->
-        <div class="hero__img-wrap fade-in">
-          <div class="hero__img-frame">
-            <img src="2x2.jpg" alt="Professional portrait of Alexis Genille S. Palicte" class="hero__img">
-            <span class="hero__img-tag">Based in Davao, Philippines</span>
-          </div>
-        </div>
+  <main class="interface-workspace" id="main">
+    <div class="interface-home" id="interfaceHome">
+      <div class="workspace-meta"><span>PERSONAL PORTFOLIO / 2026</span><span class="workspace-hint">Click an application to explore <span aria-hidden="true">↘</span></span></div>
+      <div class="workspace-grid">
+        <section class="workspace-intro" aria-labelledby="interfaceTitle">
+          <div class="profile-chip"><img src="2x2.jpg" width="720" height="720" alt="" fetchpriority="high"><div><p>Alexis Genille S. Palicte</p><span>BSIT student &amp; aspiring developer</span></div></div>
+          <h1 id="interfaceTitle">A curious mind.<br>An open<br><span class="dot-text">interface.</span></h1>
+          <p class="workspace-description">I build for the web, explore software, and learn by making things. Welcome to my little corner of the internet.</p>
+          <a href="about.html#projects" data-open-app="projects" class="btn btn--primary">Explore my projects <span aria-hidden="true">↗</span></a>
+          <p class="workspace-education">3rd-year BSIT / University of Mindanao</p>
+        </section>
+        <section class="application-launcher" aria-labelledby="launcherTitle">
+          <div class="launcher-heading"><h2 id="launcherTitle">Make yourself at home.</h2><span>( 04 )</span></div>
+          <nav class="app-grid" aria-label="Portfolio applications"><a class="app-tile" href="about.html#profile" data-open-app="about">
+  <span class="app-tile__top"><span>001 / APPLICATION</span><span class="app-tile__arrow" aria-hidden="true">↗</span></span>
+  <svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><circle cx="24" cy="16" r="8"/><path d="M9 42v-5a15 15 0 0 1 30 0v5M6 9V5h4M38 5h4v4"/></svg><span class="app-tile__name">About</span><span class="app-tile__description">The person behind the code.</span>
+  <span class="app-tile__state">Open window <span aria-hidden="true">+</span></span>
+</a>
+<a class="app-tile" href="about.html#projects" data-open-app="projects">
+  <span class="app-tile__top"><span>002 / APPLICATION</span><span class="app-tile__arrow" aria-hidden="true">↗</span></span>
+  <svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M7 16h27v27H7zM14 10V5h27v27h-5M7 25h27"/><circle cx="13" cy="20.5" r="1" fill="currentColor" stroke="none"/></svg><span class="app-tile__name">Projects</span><span class="app-tile__description">Four ideas, made real.</span>
+  <span class="app-tile__state">Open window <span aria-hidden="true">+</span></span>
+</a>
+<a class="app-tile" href="about.html#toolkit" data-open-app="skills">
+  <span class="app-tile__top"><span>003 / APPLICATION</span><span class="app-tile__arrow" aria-hidden="true">↗</span></span>
+  <svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 17V6h11M31 6h11v11M42 31v11H31M17 42H6V31"/><path d="m19 17-7 7 7 7m10-14 7 7-7 7M26 13l-4 22"/></svg><span class="app-tile__name">Skills</span><span class="app-tile__description">The tools I build with.</span>
+  <span class="app-tile__state">Open window <span aria-hidden="true">+</span></span>
+</a>
+<a class="app-tile" href="about.html#contact" data-open-app="contact">
+  <span class="app-tile__top"><span>004 / APPLICATION</span><span class="app-tile__arrow" aria-hidden="true">↗</span></span>
+  <svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 8h36v26H23L12 43v-9H6zM14 18h20M14 25h12"/></svg><span class="app-tile__name">Contact</span><span class="app-tile__description">Start a conversation.</span>
+  <span class="app-tile__state">Open window <span aria-hidden="true">+</span></span>
+</a></nav>
+          <p class="launcher-help"><span class="signal-dot" aria-hidden="true"></span><span class="desktop-help">Open. Move. Explore. Each window is yours to arrange.</span><span class="mobile-help">Tap an app to explore. Return here whenever you like.</span></p>
+        </section>
       </div>
-    </section>
+      <div class="workspace-notes">
+        <a class="workspace-latest" href="about.html#projects" data-open-app="projects" data-project="0"><span class="micro-label">IN FOCUS / LATEST PROJECT</span><strong>Veritas Core</strong><span>College demo <span aria-hidden="true">↗</span></span></a>
+        <div class="workspace-principle"><span class="micro-label">THE APPROACH</span><p>Thoughtful code.<br>Useful experiences.</p><svg viewBox="0 0 80 40" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="24" cy="8" r="3"/><circle cx="40" cy="8" r="3"/><circle cx="56" cy="8" r="3"/><circle cx="72" cy="8" r="3"/><circle cx="8" cy="24" r="3"/><circle cx="24" cy="24" r="3"/><circle cx="40" cy="24" r="3"/><circle cx="56" cy="24" r="3"/><circle cx="72" cy="24" r="3"/></svg></div>
+      </div>
+      <div class="workspace-links"><a href="about.html">Prefer a page? Read the portfolio ?</a><a href="game.html">Take a break. Visit the playground ?</a></div>
+      <noscript><p class="no-script-note">The application interface uses JavaScript. <a href="about.html">Read the full portfolio</a>, or use any application link above to go directly to that section.</p></noscript>
+    </div>
+    <div class="window-layer" id="windowLayer" aria-label="Open portfolio windows"></div>
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__status">
-        <span class="footer__brand">AP / Developer</span>
-        <span>Davao City, Philippines</span>
-        <span class="footer__tagline">&copy; 2026 Alexis Genille S. Palicte</span>
-      </div>
-      <div class="footer__socials">
-        <a href="https://www.linkedin.com/in/alexis-genille-palicte-8194b232a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-        </a>
-        <a href="https://github.com/Alexis20050" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-          <i class="fa-brands fa-github" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.facebook.com/kyrie.strong.3" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile">
-          <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
-        </a>
-      </div>
-    </div>
+  <footer class="interface-dock" id="interfaceDock">
+    <div class="dock-status"><span class="signal-dot" aria-hidden="true"></span><span id="windowCount">YOUR SPACE TO EXPLORE</span></div>
+    <nav class="dock-apps" aria-label="Application launcher"><a href="about.html#profile" class="dock-app" data-open-app="about" aria-label="Open About"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><circle cx="24" cy="16" r="8"/><path d="M9 42v-5a15 15 0 0 1 30 0v5M6 9V5h4M38 5h4v4"/></svg><span>About</span><span class="dock-indicator" aria-hidden="true"></span></a>
+<a href="about.html#projects" class="dock-app" data-open-app="projects" aria-label="Open Projects"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M7 16h27v27H7zM14 10V5h27v27h-5M7 25h27"/><circle cx="13" cy="20.5" r="1" fill="currentColor" stroke="none"/></svg><span>Projects</span><span class="dock-indicator" aria-hidden="true"></span></a>
+<a href="about.html#toolkit" class="dock-app" data-open-app="skills" aria-label="Open Skills"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 17V6h11M31 6h11v11M42 31v11H31M17 42H6V31"/><path d="m19 17-7 7 7 7m10-14 7 7-7 7M26 13l-4 22"/></svg><span>Skills</span><span class="dock-indicator" aria-hidden="true"></span></a>
+<a href="about.html#contact" class="dock-app" data-open-app="contact" aria-label="Open Contact"><svg viewBox="0 0 48 48" class="app-icon" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 8h36v26H23L12 43v-9H6zM14 18h20M14 25h12"/></svg><span>Contact</span><span class="dock-indicator" aria-hidden="true"></span></a></nav>
+    <div class="dock-tools"><button type="button" id="showHome" class="home-control" hidden aria-label="Minimize all windows and show home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg><span>Home</span></button><span class="dock-copyright">© 2026 ALEXIS.</span></div>
   </footer>
-
-  <!-- Shared JavaScript -->
-  <script src="script.js"></script>
+  <p id="interfaceStatus" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+  <script src="script.js?v=20261020"></script>
+  <script src="interface.js?v=20261020"></script>
 </body>
 </html>
